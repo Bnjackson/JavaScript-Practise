@@ -84,6 +84,64 @@ showMessage(); //We have to call the function to run it.
 
 //Local Variables - A variable declared in a function is only visible in that function.
 
-//Outer variables - A function can access an outer variable it can also edit external variables.
+//Outer variables - A function can access an outer variable it can also edit external variables. To make code clean it is recommended to use mainly local variables and parameters in the function not outer varibles.
 
-//Parameters (function arguments) - A parameter is a named variable passed into a function. Parameter variables are used to import arguments into functions.
+//Parameters (function arguments) - A parameter is a named variable passed into a function. Parameter variables are used to import arguments into functions. If a parameter value is not provided then its value becomes undefined. Parameters are seperated by a comma.
+
+//Returning (calling) a function - A function can return a value by using the return keyword in a function and then calling the function e.g.
+
+function checkAge(age) {
+  if (age >= 18) {
+    return true;
+  } else {
+    return false;
+  }
+}
+age = prompt('How old are you', 18);
+
+if(checkAge(age)) {
+  console.log('Acess granted')
+} else {
+  console.log('Acess denied')
+}
+
+/*Naming a function - Functions are actions so their name is usually a verb. It should be brief as accurate possible and describe what the function does, so that someone who reads the code gets an indication of what the function.
+For instance....
+show - shows something
+get - return a value
+calc - calculate something
+create - create something
+check - check something and retun a boolean, etc
+*/
+
+//Functions should be short and do one thing sometimes it is good to split the function into smaller functions. Seperate functions are easier to test and debug.
+
+//Function expressions - Is another syntax for creating functions.
+
+let sayHi = function() {
+  alert( "Hello" );
+};
+
+//Here the function is created and assigned to the variable explicitly, like any other value. No matter how the function is defined, its just a value stored in the variable sayHi.
+
+//Function expression vs function declaration -
+
+function functionDeclaration(a, b) {
+  return a + b;
+}
+//Function declaration: a function declared as a seperate statement in the main code flow.
+
+const functionExpression = function(a, b) {
+  return a + b;
+};
+//Function expression: a function created inside an expression or another syntax construct.
+
+//Arrow Functions: Theres another simple and concise way to create functions. Its called "arrow functions".
+
+let arrowFunction = (argument1, argument2) => expression;
+
+//its a shorter version of this
+
+let func = function(arg1, arg2, ...argN) {
+  return expression;
+};
