@@ -139,13 +139,32 @@ const functionExpression = function(a, b) {
 
 //Arrow Functions: Theres another simple and concise way to create functions. Its called "arrow functions".
 
-let arrowFunction = (argument1, argument2) => expression;
-
+let arrowFunction = (argument1, argument2) => {
+expression;
+};
 //its a shorter version of this
 
 let func = function(arg1, arg2, ...argN) {
   return expression;
 };
+
+/* Blocks - A block is the code found inside a set of {}. Blocks help us group one or more statements together
+
+Scope - Scope is the context in which our variables are declared. We think about scope in relation to blocks because variables can exist either outside of or within these blocks.
+
+Global Scope - Variables are declared outside of blocks. These variables are called global variables. Global variables are not bound inside a block, they can be accessed by any code in the program, including code in blocks. 
+
+Block Scope - When a variable is defined inside a block. That variable has block scope because it is only accesible to the lines of code within that block. Variables that are declared with block scope are known as local variables.
+
+Scope Pollution - Having too many global variables can cause problems in a program. Scope pollution is when we have too many global variables that exist in the global namespace. Scope pollution makes it difficult to keep track of our different variables and sets up potential accidents.
+*/
+
+/*Arrays - Are JavaScripts way of making lists. Arrays can store any data type. Array elements are numbered starting from 0. The difference between arrays and objects is that arrays are ordered. Arrays are created using [].
+*/
+const hobbies = ['running', 'reading', 'coding'];
+
+//
+
 
 /*OBJECTS - Objects in Comparison to primitive data types are used to store collections of various data types and more complex entities.
 Objects are created using {} a propety is a 'key value' pair and the value can be anything. key: value.
@@ -167,10 +186,11 @@ This has different values depending on where it is used
   In an event, this refers to the element that received the event.
   Methods like call(), and apply() can refer this to any object.
 */
-//Methods -
+//Methods - A function that is the property of an object is called a method
+
 const car = {
   carName: 'kia',
   sayName: function() {
-    console.log(this.carName);
+    console.log(this.carName);//To access the object the method can use the this keyword. The value of this.carName will be carName
   }
 }
