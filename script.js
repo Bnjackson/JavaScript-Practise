@@ -72,6 +72,24 @@ switch (groceryItem) {
     break;
 }
 
+/*Loops - A loop is a programming tool that repeats a set of instructions until a specified condition called a stopping condition is reached. Loops iterate or repeat an action until a specific condition is met. When the condition is met, the loop stops and the computer moves on.
+
+The for loop - A typical for loop includes an iterator variable that usually appears in all three expressions. The iterator variable is intialized checked against the stopping condition, and assigned a new value on each loop iteration. Iterator variables can have any name, but its best practise to use a descriptive names.
+
+A for loop contains three expressions seperated by ; inside the ()
+1 - An intialization starts the loop and can also be used to declare the iterator variable.
+2 - a stopping condition is the condition that the iterator variable is evaluated against - if the condition evaluates to true the code block will run, and if it evaluates to false the code to stop.
+3 - an iteration statement is used to update the iterator variable on each loop.
+*/
+
+for (let = counter = 0; counter < 4; counter++) {
+  console.log(counter);
+}
+
+
+
+
+
 /*
 A JavaScript function is a block of code designed to perform a particular task. A function is executed when something evokes it. Functions can be reused as many times as you like after defining them. They can be used with different arguments, to produce different results.
 Functions can access external data but the opposite isnt true. Other code can not look insdie a function.
@@ -119,7 +137,7 @@ check - check something and retun a boolean, etc
 
 //Function expressions - Is another syntax for creating functions.
 
-let sayHi = function() {
+const sayHi = function() {
   alert( "Hello" );
 };
 
@@ -140,7 +158,7 @@ const functionExpression = function(a, b) {
 //Arrow Functions: Theres another simple and concise way to create functions. Its called "arrow functions".
 
 let arrowFunction = (argument1, argument2) => {
-expression;
+  expression;
 };
 //its a shorter version of this
 
@@ -169,7 +187,18 @@ console.log(hobbies[0]);
 
 hobbies[3] = 'cooking'; //We can add or update elements in an array.
 console.log(hobbies.length); //The length propety will return the number of items in an array.
+hobbies.push('gaming');// .push allows us to add elements to the end of an array. Like a function .push must be called. .push mutates the array
+const removed = hobbies.pop(); //.pop removes the last item from an array .pop mutates the array
 
+//Other array methods include .join(), .slice(), .splice(), .shift(), .unshift(), and .concat()
+
+//Nested arrays - We can store arrays in other arrays. When an array contains another array it is known as a nested array. To access arrays we use the [] with the index value.
+
+const nestedArr = [[1], [2, 3]];
+
+console.log(nestedArr[1]); // Output: [2, 3] nestedArr[1] will grab the element in index 1 which is array [2, 3].
+
+console.log(nestedArr[1][0]); // Output: 2 We can chain on more index values.
 
 /*OBJECTS - Objects in Comparison to primitive data types are used to store collections of various data types and more complex entities.
 Objects are created using {} a propety is a 'key value' pair and the value can be anything. key: value.
@@ -178,7 +207,6 @@ const ben = { // an object
   firstName:'Ben', //by key 'firstName' value 'ben'
   lastName:'Jackson', //by key 'lastName' value 'jackson'
   age:24}; //by key 'age' store value 30
-
 
 console.log(ben);
 
