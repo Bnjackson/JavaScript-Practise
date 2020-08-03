@@ -82,14 +82,32 @@ A for loop contains three expressions seperated by ; inside the ()
 3 - an iteration statement is used to update the iterator variable on each loop.
 */
 
-for (let = counter = 0; counter < 4; counter++) {
+for (let = counter = 0;// intialization start of the loop and declared as variable.
+   counter < 4;//Stopping condition iterator is evaluated against this.
+    counter++) {//iteration statement used to update the iterator.
   console.log(counter);
 }
+//It is a naming convention to name our iterator variables i
 
+const animals = ['bear', 'sea lion', 'sloth'];//for loops are useful with arrays
+for (let i = 0; i < animals.length; i++){
+  console.log(animals[i]);
+}
 
+/*Nested loops - When we have loops running inside another loop that is called a nested loop. One use for a nested loop is to compare the elements in two arrays. For each round of the outer for loop, the inner for loop will run completely.
 
+While loop - While the condition is true the loop will execute. while loops are used when we dont know how many times the loop should run. While loops can create infinite loops that should be avoided as they can use too much processing power.
+let i = 0;
+while (i < 4) {
+console.log(i);
+i++;
+}
 
+do...while statements - In some cases you want a piece of code to run at least once and then loop based on specific condition after its intial run. A do...while statement will run until a specified condition is no longer met.
 
+break - The break keyword allows programs to break out of the loop from within the loops block. Break allows us to stop a loop even if the stopping condition is not met.
+
+*/
 /*
 A JavaScript function is a block of code designed to perform a particular task. A function is executed when something evokes it. Functions can be reused as many times as you like after defining them. They can be used with different arguments, to produce different results.
 Functions can access external data but the opposite isnt true. Other code can not look insdie a function.
