@@ -152,7 +152,7 @@ let func = function(arg1, arg2, ...argN) {
 
 Scope - Scope is the context in which our variables are declared. We think about scope in relation to blocks because variables can exist either outside of or within these blocks.
 
-Global Scope - Variables are declared outside of blocks. These variables are called global variables. Global variables are not bound inside a block, they can be accessed by any code in the program, including code in blocks. 
+Global Scope - Variables are declared outside of blocks. These variables are called global variables. Global variables are not bound inside a block, they can be accessed by any code in the program, including code in blocks.
 
 Block Scope - When a variable is defined inside a block. That variable has block scope because it is only accesible to the lines of code within that block. Variables that are declared with block scope are known as local variables.
 
@@ -163,7 +163,12 @@ Scope Pollution - Having too many global variables can cause problems in a progr
 */
 const hobbies = ['running', 'reading', 'coding'];
 
-//
+//Each element in array has a numbered position known as its index. We can access individual items using their index which is referencing an item in a list based on its position.
+
+console.log(hobbies[0]);
+
+hobbies[3] = 'cooking'; //We can add or update elements in an array.
+console.log(hobbies.length); //The length propety will return the number of items in an array.
 
 
 /*OBJECTS - Objects in Comparison to primitive data types are used to store collections of various data types and more complex entities.
