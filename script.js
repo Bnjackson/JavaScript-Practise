@@ -24,7 +24,7 @@ if (randomNumber === 0) { //If randomNumber = 0 the code will run.
 } else if (randomNumber === 4) {
   console.log('The number is 4');
 } else { //Will run if no other conditions run.
-  console.log('!ERROR!')
+  console.log('!ERROR!');
 }
 
 /*Comparison Operators
@@ -105,6 +105,12 @@ i++;
 
 do...while statements - In some cases you want a piece of code to run at least once and then loop based on specific condition after its intial run. A do...while statement will run until a specified condition is no longer met.
 
+let i = 0;
+do {
+  alert(i);//The body of the loop will execute at leat once regardless if true.
+  i++;
+} while (i < 3);
+
 break - The break keyword allows programs to break out of the loop from within the loops block. Break allows us to stop a loop even if the stopping condition is not met.
 
 */
@@ -183,6 +189,9 @@ let arrowFunction = (argument1, argument2) => {
 let func = function(arg1, arg2, ...argN) {
   return expression;
 };
+
+//Higher-Order Functions - A Higher-Order function is a function that either accepts functions as parameters, returns a function or both. We call the function that get passed in as parameters and invoked callback functions because they get called during the execution of the higher-order function.
+
 
 /* Blocks - A block is the code found inside a set of {}. Blocks help us group one or more statements together
 
