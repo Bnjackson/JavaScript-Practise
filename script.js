@@ -6,6 +6,14 @@ let changeVariable = 1; //Let creates variables that can change.
 
 const constantVarible = 2; //Const variables are unchangeable and remain constant. Commonly used in functions.
 
+/*Primitive Data types
+Number - Floating point, numbers for decimals and integers
+String - Sequence of characters, used for text
+Boolean - Logical data type that can be true or false
+undefined - Data type of a variable that does not have a value yet
+Null - Also means 'non-existenet'
+
+*/
 //conditional Statements
 
 const randomNumber = Math.floor(Math.random() * 5); //Math.floor rounds down a number, Math.random gets a random number between 0 and 1.
