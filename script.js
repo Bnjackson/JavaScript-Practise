@@ -6,6 +6,21 @@ let changeVariable = 1; //Let creates variables that can change.
 
 const constantVarible = 2; //Const variables are unchangeable and remain constant. Commonly used in functions.
 
+//Type coercion
+const firstName = 'john';
+let age = 28;
+
+console.log(firstName + ' ' + age);//Type coercion JavaScript automatically converts types from one to another when needed. The number is converted into a string.
+
+let job, isMarried;
+job = 'teacher';
+isMarried = false;
+
+console.log(firstName + ' is a ' + age + ' year old ' + job + '. Is he married ? ' + isMarried);
+
+//Variable Mutation - Variable mutation is when you modify a variables original value.
+age = 'twenty eight';//The age variable is mutated from a number to a string.
+
 /*Primitive Data types
 Number - Floating point, numbers for decimals and integers
 String - Sequence of characters, used for text
@@ -13,13 +28,53 @@ Boolean - Logical data type that can be true or false
 undefined - Data type of a variable that does not have a value yet
 Null - Also means 'non-existenet'
 
+We can use the typeof operator to return the data type.
+
+console.log(typeof 42) //number
 */
-//conditional Statements
+
+/* Math Operators
++	Addition
+-	Subtraction
+*	Multiplication
+**	Exponentiation (ES2016)
+/	Division
+%	Modulus (Remainder)
+++	Increment
+--	Decrement
+*/
+
+/*Comparison Operators
+1 < 2 //Less than
+2 > 1 //Greater than
+1 <= 2 //Less than or equal too
+2 >= 1 //greater than or equal too
+1 === 1 //Equal too
+1 !== 2 //Not equal too
+*/
+
+/*
+Logical Operators - Boolean Logic
+&& - The and operator checks if the conditions are true before running
+|| - The or operator Only requires one condition to be true
+!  - The not operator inverts true or false values.
+*/
+
+//Operator Precedence - Determines how operators are parsed concerning each other. Operators with higher precedence become the operands of operators with lower precedence.
+
+const colour = 'red', hexCode = '#f00', secondColour = 'blue';
+if (colour === 'blue' && hexCode === '#f00' && secondColour === 'blue') {
+  console.log('They are all true');
+}else if (colour === 'blue' || hexCode === '#f001' || secondColour === 'blue') {
+  console.log('Atleast one of the three is true');
+}else {
+  console.log('!ERROR!')
+}
+
+//conditional statements - Will perform different actions for different conditions.
 
 const randomNumber = Math.floor(Math.random() * 5); //Math.floor rounds down a number, Math.random gets a random number between 0 and 1.
 console.log(randomNumber);
-
-//conditional statements - Will perform different actions for different conditions.
 
 if (randomNumber === 0) { //If randomNumber = 0 the code will run.
   console.log('The number is 0');
@@ -33,30 +88,6 @@ if (randomNumber === 0) { //If randomNumber = 0 the code will run.
   console.log('The number is 4');
 } else { //Will run if no other conditions run.
   console.log('!ERROR!');
-}
-
-/*Comparison Operators
-1 < 2 //Less than
-2 > 1 //Greater than
-1 <= 2 //Less than or equal too
-2 => 1 //greater than or equal too
-1 === 1 //Equal too
-1 !== 2 //Not equal too
-*/
-
-/*
-Logical Operators
-&& - The and operator checks if the conditions are true before running
-|| - The or operator Only requires one condition to be true
-*/
-
-const colour = 'red', hexCode = '#f00', secondColour = 'blue';
-if (colour === 'blue' && hexCode === '#f00' && secondColour === 'blue') {
-  console.log('They are all true');
-}else if (colour === 'blue' || hexCode === '#f001' || secondColour === 'blue') {
-  console.log('Atleast one of the three is true');
-}else {
-  console.log('!ERROR!')
 }
 
 //Switch Statements provide an altenrative syntax that is easier to read and write. A switch statement is useful when having to write many else if statements.
