@@ -62,6 +62,8 @@ Logical Operators - Boolean Logic
 
 //Operator Precedence - Determines how operators are parsed concerning each other. Operators with higher precedence become the operands of operators with lower precedence.
 
+//conditional statements - Will perform different actions for different conditions.
+
 const colour = 'red', hexCode = '#f00', secondColour = 'blue';
 if (colour === 'blue' && hexCode === '#f00' && secondColour === 'blue') {
   console.log('They are all true');
@@ -70,8 +72,6 @@ if (colour === 'blue' && hexCode === '#f00' && secondColour === 'blue') {
 }else {
   console.log('!ERROR!')
 }
-
-//conditional statements - Will perform different actions for different conditions.
 
 const randomNumber = Math.floor(Math.random() * 5); //Math.floor rounds down a number, Math.random gets a random number between 0 and 1.
 console.log(randomNumber);
@@ -89,6 +89,15 @@ if (randomNumber === 0) { //If randomNumber = 0 the code will run.
 } else { //Will run if no other conditions run.
   console.log('!ERROR!');
 }
+
+//Ternary Operators - Is the only JavaScript operator that takes three operands a condition followed by a question mark (?) then an expression to execute if the condition is truthy follwed by a colon (:) and finally the expression to execute if the conditon is falsy. This operator is used as a shortcut for the if statement.
+
+const drinkingAge = 18;
+const johnsAge = 17;
+
+johnsAge >= drinkingAge ? console.log('John can drink')
+:console.log('John cannot drink');
+
 
 //Switch Statements provide an altenrative syntax that is easier to read and write. A switch statement is useful when having to write many else if statements.
 
