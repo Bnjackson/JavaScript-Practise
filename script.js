@@ -60,6 +60,13 @@ Logical Operators - Boolean Logic
 !  - The not operator inverts true or false values.
 */
 
+//Truthy and Falsy - Each value has an inherent boolean value known as a truthy or falsy.
+
+//Falsy Values: undefined, null, false, 0, '' or "" (empty string), NaN. - Values considered false when evaluated in an if else statement.
+
+
+//Truthy Values:'0', 'false', [](an empty array), {}(an empty object), function(){}(an empty function) - Values considered true when evaluated in an if else statement.
+
 //Operator Precedence - Determines how operators are parsed concerning each other. Operators with higher precedence become the operands of operators with lower precedence.
 
 //conditional statements - Will perform different actions for different conditions.
@@ -95,8 +102,10 @@ if (randomNumber === 0) { //If randomNumber = 0 the code will run.
 const drinkingAge = 18;
 const johnsAge = 17;
 
-johnsAge >= drinkingAge ? console.log('John can drink')
-:console.log('John cannot drink');
+johnsAge >= drinkingAge ? console.log('John can drink') //conditon ? expression if true
+:console.log('John cannot drink');//expression if false
+
+let drink = johnsAge >= 18 ? 'beer' : 'water';// The result will be assigned to the drink variable
 
 
 //Switch Statements provide an altenrative syntax that is easier to read and write. A switch statement is useful when having to write many else if statements.
@@ -104,19 +113,19 @@ johnsAge >= drinkingAge ? console.log('John can drink')
 const groceryItem = 'tomato';
 switch (groceryItem) {
   case 'onion':
-    console.log('Onions are £0.30')
+    console.log('Onions are £0.30');
     break;
   case 'lime':
-    console.log('Limes are £0.60')
+    console.log('Limes are £0.60');
     break;
   case 'pepper':
-    console.log('Peppers are £0.45')
+    console.log('Peppers are £0.45');
     break;
   case 'tomato':
-    console.log('Tomatos are £0.50')
+    console.log('Tomatos are £0.50');
     break;
   default:
-    console.log('Invalid Item')
+    console.log('Invalid Item');
     break;
 }
 
