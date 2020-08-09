@@ -49,7 +49,8 @@ console.log(typeof 42) //number
 2 > 1 //Greater than
 1 <= 2 //Less than or equal too
 2 >= 1 //greater than or equal too
-1 === 1 //Equal too
+5 == '5'//Equal value, type coercion, data types do not have to match
+1 === 1 //Equal value, same type 
 1 !== 2 //Not equal too
 */
 
