@@ -142,14 +142,14 @@ A for loop contains three expressions seperated by ; inside the ()
 
 for (let = counter = 0;// intialization start of the loop and declared as variable.
    counter < 4;//Stopping condition iterator is evaluated against this.
-    counter++) {//iteration statement used to update the iterator.
+   counter++) {//iteration statement used to update the iterator.
   console.log(counter);
 }
-//It is a naming convention to name our iterator variables i
+//It is a naming convention to name our counting variables i
 
-const animals = ['bear', 'sea lion', 'sloth'];//for loops are useful with arrays
+const animals = ['bear', 'sea lion', 'sloth'];
 for (let i = 0; i < animals.length; i++){
-  console.log(animals[i]);
+  console.log(animals[i]);//Looping through arrays is one of the most common uses of loops.
 }
 
 /*Nested loops - When we have loops running inside another loop that is called a nested loop. One use for a nested loop is to compare the elements in two arrays. For each round of the outer for loop, the inner for loop will run completely.
@@ -169,7 +169,23 @@ do {
   i++;
 } while (i < 3);
 
-break - The break keyword allows programs to break out of the loop from within the loops block. Break allows us to stop a loop even if the stopping condition is not met.
+looping backwards - 
+const nick = ['Nick', 'Smith', 1990, 'designer', false];
+for (let i = nick.length - 1; i >= 0; i--) {
+  console.log(nick[i]);
+
+break - The break keyword allows programs to break("end") out of the loop from within the loops block. Break allows us to stop a loop even if the stopping condition is not met.
+
+const nick = ['Nick', 'Smith', 1990, 'designer', false];
+for (let i = 0; i < nick.length; i++) {
+  if (typeof nick[i] !== 'string') break;//The loop will break(end) when a non string element is looped
+  console.log(nick[i]);//Will print 'Nick', ' Smith'
+
+continue - The continue statement skips one iteration in the loop if a specified condition occurs, and continues with the next iteration in the loop.
+const nick = ['Nick', 'Smith', 1990, 'designer', false];
+for (let i = 0; i < nick.length; i++) {
+  if (typeof nick[i] !== 'string') continue;//The loop will skip one iteration if element is not a string
+  console.log(nick[i]); //'nick', 'smith', 'designer'
 
 */
 /*
@@ -302,7 +318,7 @@ const ben = { // an object
 };
 console.log(ben);
 /*
-console.log(ben.firstName); //We can access arrays using the . method
+console.log(ben.firstName); //We can access objects using the . method
 console.log(ben['lastName']); // Or using [] to retrieve an element
 const x = 'age';
 console.log(ben[x]); //Will print 24 useful logic for accessing data from an array.
