@@ -290,7 +290,7 @@ console.log(nestedArr[1]); // Output: [2, 3] nestedArr[1] will grab the element 
 
 console.log(nestedArr[1][0]); // Output: 2 We can chain on more index values.
 
-/*OBJECTS - Objects in Comparison to primitive data types are used to store collections of various data types and more complex entities.
+/*OBJECTS - Objects in Comparison to primitive data types are used to store collections of various data types and more complex entities such as arrays and functions.
 Objects are created using {} a propety is a 'key value' pair and the value can be anything. key: value.
 */
 const ben = { // an object
@@ -301,7 +301,14 @@ const ben = { // an object
   isMarried: false
 };
 console.log(ben);
-
+/*
+console.log(ben.firstName); //We can access arrays using the . method
+console.log(ben['lastName']); // Or using [] to retrieve an element
+const x = 'age';
+console.log(ben[x]); //Will print 24 useful logic for accessing data from an array.
+ben.job = 'programmer';//We can add to the object using name.key = value
+ben.age = 29;//We can also mutate
+*/
 /*this keyword - Refers to the object it belongs to.
 This has different values depending on where it is used
   In a method this refers to the object owner.
@@ -315,7 +322,13 @@ This has different values depending on where it is used
 
 const car = {
   carName: 'kia',
-  sayName: function() {
-    console.log(this.carName);//To access the object the method can use the this keyword. The value of this.carName will be carName
+  price: 500,
+  year: 1990,
+  condition: 'poor',
+  calcAge: function() {//Method
+    this.age = 2020 - this.year;//The this keyword refers to the object the method belongs to.
   }
 }
+
+car.calcAge();
+console.log(car);
