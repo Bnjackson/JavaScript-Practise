@@ -50,7 +50,7 @@ console.log(typeof 42) //number
 1 <= 2 //Less than or equal too
 2 >= 1 //greater than or equal too
 5 == '5'//Equal value, type coercion, data types do not have to match
-1 === 1 //Equal value, same type 
+1 === 1 //Equal value, same type
 1 !== 2 //Not equal too
 */
 
@@ -225,7 +225,12 @@ const sayHi = function() {
 
 //Here the function is created and assigned to the variable explicitly, like any other value. No matter how the function is defined, its just a value stored in the variable sayHi.
 
-//Function expression vs function declaration -
+//Expressions vs Statements vs Declarations - An expression is a piece of code that always produces a value and can be written wherever a value is expected.
+// A statement is a standalone unit of execution it does not return anything.
+// A declaration is a statement in which a value is assigned to a variable. All declarations are statements but not all statements are declarations.
+
+
+//Function expression vs function declaration
 
 function functionDeclaration(a, b) {
   return a + b;
@@ -291,8 +296,10 @@ Objects are created using {} a propety is a 'key value' pair and the value can b
 const ben = { // an object
   firstName:'Ben', //by key 'firstName' value 'ben'
   lastName:'Jackson', //by key 'lastName' value 'jackson'
-  age:24}; //by key 'age' store value 30
-
+  age:24,//by key 'age' store value 30
+  family: ['Jane', 'Mark', 'Emily'],//Objects can store arrays
+  isMarried: false
+};
 console.log(ben);
 
 /*this keyword - Refers to the object it belongs to.
