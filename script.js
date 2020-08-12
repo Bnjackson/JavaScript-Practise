@@ -130,64 +130,6 @@ switch (groceryItem) {
     break;
 }
 
-/*Loops - A loop is a programming tool that repeats a set of instructions until a specified condition called a stopping condition is reached. Loops iterate or repeat an action until a specific condition is met. When the condition is met, the loop stops and the computer moves on.
-
-The for loop - A typical for loop includes an iterator variable that usually appears in all three expressions. The iterator variable is intialized checked against the stopping condition, and assigned a new value on each loop iteration. Iterator variables can have any name, but its best practise to use a descriptive names.
-
-A for loop contains three expressions seperated by ; inside the ()
-1 - An intialization starts the loop and can also be used to declare the iterator variable.
-2 - a stopping condition is the condition that the iterator variable is evaluated against - if the condition evaluates to true the code block will run, and if it evaluates to false the code to stop.
-3 - an iteration statement is used to update the iterator variable on each loop.
-*/
-
-for (let = counter = 0;// intialization start of the loop and declared as variable.
-   counter < 4;//Stopping condition iterator is evaluated against this.
-   counter++) {//iteration statement used to update the iterator.
-  console.log(counter);
-}
-//It is a naming convention to name our counting variables i
-
-const animals = ['bear', 'sea lion', 'sloth'];
-for (let i = 0; i < animals.length; i++){
-  console.log(animals[i]);//Looping through arrays is one of the most common uses of loops.
-}
-
-/*Nested loops - When we have loops running inside another loop that is called a nested loop. One use for a nested loop is to compare the elements in two arrays. For each round of the outer for loop, the inner for loop will run completely.
-
-While loop - While the condition is true the loop will execute. while loops are used when we dont know how many times the loop should run. While loops can create infinite loops that should be avoided as they can use too much processing power.
-let i = 0;
-while (i < 4) {
-console.log(i);
-i++;
-}
-
-do...while statements - In some cases you want a piece of code to run at least once and then loop based on specific condition after its intial run. A do...while statement will run until a specified condition is no longer met.
-
-let i = 0;
-do {
-  alert(i);//The body of the loop will execute at leat once regardless if true.
-  i++;
-} while (i < 3);
-
-looping backwards - 
-const nick = ['Nick', 'Smith', 1990, 'designer', false];
-for (let i = nick.length - 1; i >= 0; i--) {
-  console.log(nick[i]);
-
-break - The break keyword allows programs to break("end") out of the loop from within the loops block. Break allows us to stop a loop even if the stopping condition is not met.
-
-const nick = ['Nick', 'Smith', 1990, 'designer', false];
-for (let i = 0; i < nick.length; i++) {
-  if (typeof nick[i] !== 'string') break;//The loop will break(end) when a non string element is looped
-  console.log(nick[i]);//Will print 'Nick', ' Smith'
-
-continue - The continue statement skips one iteration in the loop if a specified condition occurs, and continues with the next iteration in the loop.
-const nick = ['Nick', 'Smith', 1990, 'designer', false];
-for (let i = 0; i < nick.length; i++) {
-  if (typeof nick[i] !== 'string') continue;//The loop will skip one iteration if element is not a string
-  console.log(nick[i]); //'nick', 'smith', 'designer'
-
-*/
 /*
 A JavaScript function is a block of code designed to perform a particular task. A function is executed when something evokes it. Functions can be reused as many times as you like after defining them. They can be used with different arguments, to produce different results.
 Functions can access external data but the opposite isnt true. Other code can not look insdie a function.
@@ -348,3 +290,62 @@ const car = {
 
 car.calcAge();
 console.log(car);
+
+/*Loops - A loop is a programming tool that repeats a set of instructions until a specified condition called a stopping condition is reached. Loops iterate or repeat an action until a specific condition is met. When the condition is met, the loop stops and the computer moves on.
+
+The for loop - A typical for loop includes an iterator variable that usually appears in all three expressions. The iterator variable is intialized checked against the stopping condition, and assigned a new value on each loop iteration. Iterator variables can have any name, but its best practise to use a descriptive names.
+
+A for loop contains three expressions seperated by ; inside the ()
+1 - An intialization starts the loop and can also be used to declare the iterator variable.
+2 - a stopping condition is the condition that the iterator variable is evaluated against - if the condition evaluates to true the code block will run, and if it evaluates to false the code to stop.
+3 - an iteration statement is used to update the iterator variable on each loop.
+*/
+
+for (let = counter = 0;// intialization start of the loop and declared as variable.
+   counter < 4;//Stopping condition iterator is evaluated against this.
+   counter++) {//iteration statement used to update the iterator.
+  console.log(counter);
+}
+//It is a naming convention to name our counting variables i
+
+const animals = ['bear', 'sea lion', 'sloth'];
+for (let i = 0; i < animals.length; i++){
+  console.log(animals[i]);//Looping through arrays is one of the most common uses of loops.
+}
+
+/*Nested loops - When we have loops running inside another loop that is called a nested loop. One use for a nested loop is to compare the elements in two arrays. For each round of the outer for loop, the inner for loop will run completely.
+
+While loop - While the condition is true the loop will execute. while loops are used when we dont know how many times the loop should run. While loops can create infinite loops that should be avoided as they can use too much processing power.
+let i = 0;
+while (i < 4) {
+console.log(i);
+i++;
+}
+
+do...while statements - In some cases you want a piece of code to run at least once and then loop based on specific condition after its intial run. A do...while statement will run until a specified condition is no longer met.
+
+let i = 0;
+do {
+  alert(i);//The body of the loop will execute at leat once regardless if true.
+  i++;
+} while (i < 3);
+
+looping backwards -
+const nick = ['Nick', 'Smith', 1990, 'designer', false];
+for (let i = nick.length - 1; i >= 0; i--) {
+  console.log(nick[i]);
+
+break - The break keyword allows programs to break("end") out of the loop from within the loops block. Break allows us to stop a loop even if the stopping condition is not met.
+
+const nick = ['Nick', 'Smith', 1990, 'designer', false];
+for (let i = 0; i < nick.length; i++) {
+  if (typeof nick[i] !== 'string') break;//The loop will break(end) when a non string element is looped
+  console.log(nick[i]);//Will print 'Nick', ' Smith'
+
+continue - The continue statement skips one iteration in the loop if a specified condition occurs, and continues with the next iteration in the loop.
+const nick = ['Nick', 'Smith', 1990, 'designer', false];
+for (let i = 0; i < nick.length; i++) {
+  if (typeof nick[i] !== 'string') continue;//The loop will skip one iteration if element is not a string
+  console.log(nick[i]); //'nick', 'smith', 'designer'
+
+*/
