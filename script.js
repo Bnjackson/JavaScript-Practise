@@ -4,7 +4,7 @@ var oldVariable = 0; //Var is used less in ES6 than let and const.
 
 let changeVariable = 1; //Let creates variables that can change.
 
-const constantVarible = 2; //Const variables are unchangeable and remain constant. Commonly used in functions.
+const constantVarible = 2; //Const variables remain constant and cannot be reassigned. Commonly used in functions.
 
 //Type coercion
 const firstName = 'john';
