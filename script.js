@@ -225,9 +225,9 @@ Block Scope - When a variable is defined inside a block. That variable has block
 Scope Pollution - Having too many global variables can cause problems in a program. Scope pollution is when we have too many global variables that exist in the global namespace. Scope pollution makes it difficult to keep track of our different variables and sets up potential accidents.
 */
 
-/*Arrays - Are JavaScripts way of making lists. Arrays can store any data type. Array elements are numbered starting from 0. The difference between arrays and objects is that arrays are ordered. Arrays are created using [].
+/*Arrays - Are JavaScripts way of making lists. Arrays can store any data type. Array elements are numbered starting from 0. The difference between arrays and objects is that arrays are ordered. Arrays are created using []. Arrays are useful for storing a list of something: users, goods, HTML elements etc. Arrays provide ways to manage the order of elements unlike objects.
 */
-const hobbies = ['running', 'reading', 'coding'];
+let hobbies = ['running', 'reading', 'coding'];
 
 //Each element in array has a numbered position known as its index. We can access individual items using their index which is referencing an item in a list based on its position.
 
