@@ -265,16 +265,16 @@ const ben = { // an object
   lastName:'Jackson', //by key 'lastName' value 'jackson'
   age:24,//by key 'age' store value 30
   family: ['Jane', 'Mark', 'Emily'],//Objects can store arrays
-  isMarried: false
+  'is Married': false
 };
 console.log(ben);
 /*
 console.log(ben.firstName); //We can access objects using the . method
-console.log(ben['lastName']); // Or using [] to retrieve an element
 const x = 'age';
 console.log(ben[x]); //Will print 24 useful logic for accessing data from an array.
 ben.job = 'programmer';//We can add to the object using name.key = value
 ben.age = 29;//We can also mutate
+ben[""]; // Or using [] to retrieve an element
 */
 /*this keyword - Refers to the object it belongs to.
 This has different values depending on where it is used
