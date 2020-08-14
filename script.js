@@ -265,7 +265,7 @@ const ben = { // an object
   lastName:'Jackson', //by key 'lastName' value 'jackson'
   age:24,//by key 'age' store value 30
   family: ['Jane', 'Mark', 'Emily'],//Objects can store arrays
-  'is Married': false
+  'is Married': false, //We can create multiword propety names they must be quoted.
 };
 console.log(ben);
 /*
@@ -274,7 +274,7 @@ const x = 'age';
 console.log(ben[x]); //Will print 24 useful logic for accessing data from an array.
 ben.job = 'programmer';//We can add to the object using name.key = value
 ben.age = 29;//We can also mutate
-ben[""]; // Or using [] to retrieve an element
+ben["Favourite Film"] = Big Lebowski; //We use [] to create multiword propety names.
 */
 /*this keyword - Refers to the object it belongs to.
 This has different values depending on where it is used
