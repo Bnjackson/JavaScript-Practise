@@ -240,7 +240,7 @@ console.log(hobbies.length); //The length propety will return the number of item
 hobbies.push('gaming');// .push allows us to add elements to the end of an array. Like a function .push must be called. .push mutates the array
 const removed = hobbies.pop(); //.pop removes the last item from an array .pop mutates the array
 hobbies.shift();// .shift removes the first element in an array.
-hobbies.unShift('Films');//.unShift adds an element to the start of the array.
+hobbies.unshift('Films');//.unShift adds an element to the start of the array.
 hobbies.splice(0, 0, 'Travel', 'Music');//Splice is used to add and remove items from an array. The first parameter(0) defines the position where new elements should be added, the second parameter defines how many elments should be removed (0). The rest of the parameters ('Travel', 'Music') define the new elements to be added.
 
 let mixedArray = ['Apple', 'Bannana', 1, { name: 'john'}, true, function sayMelon() {console.log('Melon')}];//Arrays can store any element type.
@@ -299,6 +299,29 @@ const car = {
 
 car.calcAge();
 console.log(car);
+
+
+//Method Borrowing - Is a very common practise which allows us to use the methods of one object on a different object without having to copy and maintain it in two seperate places.
+let matthew = {
+  name: 'matthew',
+  yearOfBirth: 1990,
+  calcAge: function() {
+    console.log(this);
+    console.log(2020 - this.yearOfBirth)
+  }
+}
+matthew.calcAge();
+
+let mike = {
+  name: 'mike',
+  yearOfBirth: 1984
+}
+
+
+mike.calcAge = matthew.calcAge;//We are copying the calcAge function from the matthew method to the mike method without having to copy the code.
+mike.calcAge();
+console.log(mike);//The mike method now contains the calcAge function from the matthew method. 
+
 
 /*Loops - A loop is a programming tool that repeats a set of instructions until a specified condition called a stopping condition is reached. Loops iterate or repeat an action until a specific condition is met. When the condition is met, the loop stops and the computer moves on.
 
