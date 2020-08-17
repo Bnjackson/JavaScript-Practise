@@ -2,7 +2,7 @@
 
 var oldVariable = 0; //Var is used less in ES6 than let and const.
 
-let changeVariable = 1; //Let creates variables that can change.
+let changeVariable = 1; //Let creates variables that can be reassigned.
 
 const constantVarible = 2; //Const variables remain constant and cannot be reassigned. Commonly used in functions.
 
@@ -33,6 +33,8 @@ We can use the typeof operator to return the data type.
 console.log(typeof 42) //number
 */
 
+//Operators are used to assign values, compare values, perform arithmetic operations and more.
+
 /* Math Operators
 +	Addition
 -	Subtraction
@@ -54,11 +56,25 @@ console.log(typeof 42) //number
 1 !== 2 //Not equal too
 */
 
-/*
-Logical Operators - Boolean Logic
+/*Logical Operators - Boolean Logic
 && - The and operator checks if the conditions are true before running
 || - The or operator Only requires one condition to be true
 !  - The not operator inverts true or false values.
+*/
+
+/*Assignment operators
+Assignment operators are used to assign values to variables
+= - Assigns a value to a variable
++= - Adds a value to a variable
+-= - Subtracts value from a variable
+*= - Multiplies a variable
+/= - Divides a variable
+%= - Assigns a remainder varable
+*/
+
+/*String Operators
++ - Used to concatenate (add) strings.
++= - Also used to add strings together.
 */
 
 //Truthy and Falsy - Each value has an inherent boolean value known as a truthy or falsy.
@@ -320,7 +336,7 @@ let mike = {
 
 mike.calcAge = matthew.calcAge;//We are copying the calcAge function from the matthew method to the mike method without having to copy the code.
 mike.calcAge();
-console.log(mike);//The mike method now contains the calcAge function from the matthew method. 
+console.log(mike);//The mike method now contains the calcAge function from the matthew method.
 
 
 /*Loops - A loop is a programming tool that repeats a set of instructions until a specified condition called a stopping condition is reached. Loops iterate or repeat an action until a specific condition is met. When the condition is met, the loop stops and the computer moves on.
