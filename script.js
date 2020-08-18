@@ -1,6 +1,6 @@
 //Variables - Named storage for data
 
-var oldVariable = 0; //Var is used less in ES6 than let and const.
+var oldVariable = 0; //Var is rarely used since let and const were introduced in ES6. var is function scoped.
 
 let changeVariable = 1; //Let creates variables that can be reassigned.
 
