@@ -45,6 +45,19 @@ console.log(typeof 42) //number
 ++	Increment
 --	Decrement
 */
+/*
+Increment and decrement operators can be applied both before and after the operator. Both postfix and prefix increase or decrease the value by 1. The ++ or -- can be applied both before and after the variable .
+
+Postfix - counter++ - The postfix form returns the original value of the variable of the variable before the increment/decrement
+
+let counter = 2;
+console.log(counter++); //2 Returns the original value prior to the increment.
+
+Prefix - ++counter - The prefix form returns the value after the increment/decrement.
+
+let counter = 2;
+console.log(++counter); //3 Returns the incremented value.
+*/
 
 /*Comparison Operators
 1 < 2 //Less than
@@ -80,7 +93,6 @@ Assignment operators are used to assign values to variables
 //Truthy and Falsy - Each value has an inherent boolean value known as a truthy or falsy.
 
 //Falsy Values: undefined, null, false, 0, '' or "" (empty string), NaN. - Values considered false when evaluated in an if else statement.
-
 
 //Truthy Values:'0', 'false', [](an empty array), {}(an empty object), function(){}(an empty function) - Values considered true when evaluated in an if else statement.
 
