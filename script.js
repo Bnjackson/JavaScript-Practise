@@ -1,4 +1,4 @@
-//Variables - Named storage for data
+//Variables - Named storage for data - JavaScript is "dynamically typed" meaning that there exist data types but variables are not bound to any of them.
 
 var oldVariable = 0; //Var is rarely used since let and const were introduced in ES6. var is function scoped.
 
@@ -21,15 +21,15 @@ console.log(firstName + ' is a ' + age + ' year old ' + job + '. Is he married ?
 //Variable Mutation - Variable mutation is when you modify a variables original value.
 age = 'twenty eight';//The age variable is mutated from a number to a string.
 
-/*Primitive Data types
+/*Primitive Data types - their values can only contain a single thing.
 Number - Floating point, numbers for decimals and integers
-String - Sequence of characters, used for text
-Boolean - Logical data type that can be true or false
+String - Sequence of characters, used for text. By using backticks(``) and ${} we can create a "extended functionality" quotes they allow us to embed variables and expressions into a string by wrapping them in `${}`
+Boolean - Logical data type that can be true or false rsult of comparisons.
 undefined - Data type of a variable that does not have a value yet
-Null - Also means 'non-existenet'
+Null - Also means 'non-existenet' empty or value unknown.
+BigInt - Represents numbers larger than the JavaScript limit.
 
 We can use the typeof operator to return the data type.
-
 console.log(typeof 42) //number
 */
 
@@ -45,6 +45,7 @@ console.log(typeof 42) //number
 ++	Increment
 --	Decrement
 */
+
 /*
 Increment and decrement operators can be applied both before and after the operator. Both postfix and prefix increase or decrease the value by 1. The ++ or -- can be applied both before and after the variable .
 
@@ -107,7 +108,7 @@ if (colour === 'blue' && hexCode === '#f00' && secondColour === 'blue') {
   console.log('Atleast one of the three is true');
 }else {
   console.log('!ERROR!')
-}
+};
 
 const randomNumber = Math.floor(Math.random() * 5); //Math.floor rounds down a number, Math.random gets a random number between 0 and 1.
 console.log(randomNumber);
@@ -124,7 +125,7 @@ if (randomNumber === 0) { //If randomNumber = 0 the code will run.
   console.log('The number is 4');
 } else { //Will run if no other conditions run.
   console.log('!ERROR!');
-}
+};
 
 //Ternary Operators - Is the only JavaScript operator that takes three operands a condition followed by a question mark (?) then an expression to execute if the condition is truthy follwed by a colon (:) and finally the expression to execute if the conditon is falsy. This operator is used as a shortcut for the if statement.
 
