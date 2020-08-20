@@ -229,6 +229,13 @@ const functionExpression = function(a, b) {
 };
 //Function expression: a function created inside an expression or another syntax construct.
 
+/*Anonymous Functions - An Anonymous function is a function without a name it wont do anything on its own. You generally use an Anonymous function with an event handler, so the function runs in response to an event such as a button being clicked.
+const myButton = document.querySelector('button');
+
+myButton.onclick = function() {
+  alert('hello');
+}
+*/
 //Arrow Functions: Theres another simple and concise way to create functions. Its called "arrow functions".
 
 let arrowFunction = (argument1, argument2) => {
