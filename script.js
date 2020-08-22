@@ -223,12 +223,12 @@ const sayHi = function() {
 function functionDeclaration(a, b) {
   return a + b;
 }
-//Function declaration: a function declared as a seperate statement in the main code flow.
+//Function declaration: a function declared as a seperate statement in the main code flow. Declarations have global scope declarations are visible throughtout the code. They can be called before they are declared. Declarations are usually used more than expressions as they more readable and provide more freedom.
 
 const functionExpression = function(a, b) {
   return a + b;
 };
-//Function expression: a function created inside an expression or another syntax construct.
+//Function expression: a function created inside an expression or another syntax construct. Expressions can be useful for callback functions and have the benefits of being contained in a variable.
 
 /*Anonymous Functions - An Anonymous function is a function without a name it wont do anything on its own. You generally use an Anonymous function with an event handler, so the function runs in response to an event such as a button being clicked.
 const myButton = document.querySelector('button');
