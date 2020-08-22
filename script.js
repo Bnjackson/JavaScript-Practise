@@ -133,7 +133,7 @@ const drinkingAge = 18;
 const johnsAge = 17;
 
 johnsAge >= drinkingAge ? console.log('John can drink') //conditon ? expression if true
-:console.log('John cannot drink');//expression if false
+: console.log('John cannot drink');//expression if false
 
 let drink = johnsAge >= 18 ? 'beer' : 'water';// The result will be assigned to the drink variable
 
@@ -162,6 +162,7 @@ switch (groceryItem) {
 /*
 A JavaScript function is a block of code designed to perform a particular task. A function is executed when something evokes it. Functions can be reused as many times as you like after defining them. They can be used with different arguments, to produce different results.
 Functions can access external data but the opposite isnt true. Other code can not look insdie a function.
+A function should do exactly what is suggested by its name and no more. Two independent actions requires two functions.
 */
 
 function showMessage() { //Function keyword, function name and parameters between the ().
