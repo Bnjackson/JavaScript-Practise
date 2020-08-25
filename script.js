@@ -264,6 +264,8 @@ Scope Pollution - Having too many global variables can cause problems in a progr
 
 /*Arrays - Are JavaScripts way of making lists. Arrays can store any data type. Array elements are numbered starting from 0. The difference between arrays and objects is that arrays are ordered. Arrays are created using []. Arrays are useful for storing a list of something: users, goods, HTML elements etc. Arrays provide ways to manage the order of elements unlike objects.
 
+Some programming langauages allow arrays with named indexs, these are called associative arrays (or hashes). JavaScript only has numbered arrays and does not support associative arrays.
+
 Arrays can store elements of any type including strings, numbers, booleans, functions, objects
 */
 let hobbies = ['running', 'reading', 'coding'];
@@ -285,6 +287,24 @@ let mixedArray = ['Apple', 'Bannana', 1, { name: 'john'}, true, function sayMelo
 mixedArray[5]();//Calling the function from the array.
 
 console.log(mixedArray);
+
+/*Sort - The sort() method sorts arrays alphabetically.
+The reverse() method reverses the elements in an array you can use it to sort an array in descending order.
+
+Numeric Sort - By default the sort() method sorts strings. However when we try to sort numbers like strings "25 is sorted higher than 100 because 2 is greater than 1". Because of this sort() method will produce incorrect results when sorting.  We can use a compare function to fix this.
+
+let numbers = [100, 45, 62 , 76, 909, 23, 97, 53, 32, 16, 36, 111];
+sortNumeric();
+function sortNumeric() {
+    numbers.sort(function (a, b){
+        return a - b;
+    });
+}
+The compare function compares all the values in an array two at a time.
+e.g. 40 - 100 = -60 so 40 is sorted at a lower value than 100.
+ */
+
+
 
 //Nested arrays - We can store arrays in other arrays. When an array contains another array it is known as a nested array. To access arrays we use the [] with the index value.
 
