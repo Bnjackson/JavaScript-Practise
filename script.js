@@ -277,8 +277,8 @@ console.log(hobbies[0]);
 hobbies[3] = 'cooking'; //We can add or update elements in an array.
 console.log(hobbies.length); //The length propety will return the number of items in an array.
 hobbies.push('gaming');// .push allows us to add elements to the end of an array. Like a function .push must be called. .push mutates the array
-const removed = hobbies.pop(); //.pop removes the last item from an array .pop mutates the array
-hobbies.shift();// .shift removes the first element in an array.
+const removed = hobbies.pop(); //.pop removes the last item from an array the removed value can be assigned as a variable.
+let removedFromArray = hobbies.shift();// .shift removes the first element in an array. The removed value is stored in a variable if used.
 hobbies.unshift('Films');//.unShift adds an element to the start of the array.
 hobbies.splice(0, 0, 'Travel', 'Music');//Splice is used to add and remove items from an array. The first parameter(0) defines the position where new elements should be added, the second parameter defines how many elments should be removed (0). The rest of the parameters ('Travel', 'Music') define the new elements to be added.
 
