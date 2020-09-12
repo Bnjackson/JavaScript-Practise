@@ -132,7 +132,7 @@ if (randomNumber === 0) { //If randomNumber = 0 the code will run.
 const drinkingAge = 18;
 const johnsAge = 17;
 
-johnsAge >= drinkingAge ? console.log('John can drink') //conditon ? expression if true
+johnsAge >= drinkingAge ? console.log('John can drink'); //conditon ? expression if true
 : console.log('John cannot drink');//expression if false
 
 let drink = johnsAge >= 18 ? 'beer' : 'water';// The result will be assigned to the drink variable
@@ -156,7 +156,6 @@ switch (groceryItem) {
     break;
   default:
     console.log('Invalid Item');
-    break;
 }
 
 /*
