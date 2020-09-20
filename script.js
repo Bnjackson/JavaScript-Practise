@@ -378,6 +378,7 @@ mike.calcAge = matthew.calcAge;//We are copying the calcAge function from the ma
 mike.calcAge();
 console.log(mike);//The mike method now contains the calcAge function from the matthew method.
 
+//ITERATORS - JavaScript provides a number of ways of iterating over a collection, from for loops, while loops, to forEach(), map() etc.
 
 /*Loops - A loop is a programming tool that repeats a set of instructions until a specified condition called a stopping condition is reached. Loops iterate or repeat an action until a specific condition is met. When the condition is met, the loop stops and the computer moves on.
 
@@ -435,5 +436,66 @@ const nick = ['Nick', 'Smith', 1990, 'designer', false];
 for (let i = 0; i < nick.length; i++) {
   if (typeof nick[i] !== 'string') continue;//The loop will skip one iteration if element is not a string
   console.log(nick[i]); //'nick', 'smith', 'designer'
+
+ITERATOR METHODS
+
+.forEach() method - is used to call a provided function once for each element in an array in order.
+
+const array = ['a', 'b', 'c'];
+array.forEach(printArray);
+function printArray(element) { //The element parameter refers to the array.
+console.log(element)} //Prints ['a', 'b', 'c'];
+
+.map() method = Creates a new array with the results of calling a provided function once for every array element.
+
+const bigNumbers = [100, 200, 300, 400, 500];
+const smallNumbers = bigNumbers.map(divideNumbers);
+function divideNumbers(num) {
+	return num/100;
+}
+console.log(smallNumbers); //Prints [1, 2, 3, 4, 5]
+
+.filter() = Like .map() this method returns a new array. However .filter() returns an array of elements after filtering out certain elements from the original array. filter() calls a fallback function for each elememt in array and constructs a new array of all the values for which the callback returns true.
+
+const randomNumbers = [375, 200, 3.14, 7, 13, 852];
+const smallNumbers = randomNumbers.filter(lessThan);
+function lessThan (num) {
+  return num < 250;
+}
+console.log(smallNumbers) //Print 200, 3.14, 7, 13
+
+.findIndex() = this method helps us find the location of an element in an array. Calling .findIndex() on an array will return the index of the first element that evaluates to true in the callback function. If there isnt a single element that satisfies the condition in the callback then findIndex() will return -1.
+
+const animals = ["hippo", "giraffe", "tiger", "lion", "seal", "monkey", "elephant"]
+
+const elephantPosition = animals.indexOf(indexOfAnimals);
+
+function indexOfAnimals(animal) {
+  return animal === "elephant";
+}
+console.log(elephantPostion); //Prints 6 position of elephant in array.
+
+.reduce() = is a method that returns a single value after iterating through the elements of an aray, thereby reducing the array. The callback function takes two values the accumulator and the current value. The value of the accumulator starts off as the value of as the value of the first element in the array and the current value starts as the second value. As reduce() iterates through the array the accumulator value becomes the return value of the callback function for the next iteration.
+
+Other iterators include .some() and .every.
+.some() = tests whether at least one element in an array passes the test implemented by the problem. It returns a boolean value.
+
+.every() = Method tests whether all elements in the array pass the test implemented by the provided function. It returns a boolean value. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 */
