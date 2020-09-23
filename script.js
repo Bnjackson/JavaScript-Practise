@@ -249,6 +249,7 @@ let func = function(arg1, arg2, ...argN) {
 
 //Higher-Order Functions - A Higher-Order function is a function that either accepts functions as parameters, returns a function or both. We call the function that get passed in as parameters and invoked callback functions because they get called during the execution of the higher-order function.
 
+//Callback Function = a callback function is a function that is passed as a parameter to another JavaScript function, and the callback function is run inside of the function it was passed into.
 
 /* Blocks - A block is the code found inside a set of {}. Blocks help us group one or more statements together
 
@@ -303,8 +304,6 @@ The compare function compares all the values in an array two at a time.
 e.g. 40 - 100 = -60 so 40 is sorted at a lower value than 100.
  */
 
-
-
 //Nested arrays - We can store arrays in other arrays. When an array contains another array it is known as a nested array. To access arrays we use the [] with the index value.
 
 let nestedArr = [[1], [2, 3]];
@@ -331,6 +330,7 @@ console.log(ben[x]); //Will print 24 useful logic for accessing data from an arr
 ben.job = 'programmer';//We can add to the object using name.key = value
 ben.age = 29;//We can also mutate
 ben["Favourite Film"] = Big Lebowski; //We use [] to create multiword propety names.
+delete ben.job; //We can delete a property from an object with the delete operator.
 */
 /*this keyword - Refers to the object it belongs to.
 This has different values depending on where it is used
@@ -401,6 +401,15 @@ const animals = ['bear', 'sea lion', 'sloth'];
 for (let i = 0; i < animals.length; i++){
   console.log(animals[i]);//Looping through arrays is one of the most common uses of loops.
 }
+
+/*Looping through Objects: We cannot loop through a object like we would an array becuase the key value pairs in objects are not ordered. The solution for iterating through objects with the for...in syntax
+
+const object = { a: 1, b: 2, c: 3 };
+
+for (const property in object) {
+  console.log(`${property}: ${object[property]}`);
+}// expected output:// "a: 1"// "b: 2"// "c: 3"
+*/
 
 /*Nested loops - When we have loops running inside another loop that is called a nested loop. One use for a nested loop is to compare the elements in two arrays. For each round of the outer for loop, the inner for loop will run completely.
 
@@ -480,7 +489,7 @@ console.log(elephantPostion); //Prints 6 position of elephant in array.
 Other iterators include .some() and .every.
 .some() = tests whether at least one element in an array passes the test implemented by the problem. It returns a boolean value.
 
-.every() = Method tests whether all elements in the array pass the test implemented by the provided function. It returns a boolean value. 
+.every() = Method tests whether all elements in the array pass the test implemented by the provided function. It returns a boolean value.
 
 
 
