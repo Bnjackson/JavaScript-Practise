@@ -324,7 +324,7 @@ const ben = { // an object
 };
 console.log(ben);
 /*
-console.log(ben.firstName); //We can access objects using the . method
+console.log(ben.firstName); //We can access objects using dot notation
 const x = 'age';
 console.log(ben[x]); //Will print 24 useful logic for accessing data from an array.
 ben.job = 'programmer';//We can add to the object using name.key = value
@@ -377,6 +377,83 @@ let mike = {
 mike.calcAge = matthew.calcAge;//We are copying the calcAge function from the matthew method to the mike method without having to copy the code.
 mike.calcAge();
 console.log(mike);//The mike method now contains the calcAge function from the matthew method.
+
+/*OBJECT PRIVACY - When discussing privacy in objects we define it as the idea that only certain properties should be mutable or able to change in value. Certain langauges have privacy inbuilt for objects but JavaScript does not have this feature. Rather JavaScript developers follow naming conventions that signal to other developers how to interact with a property.
+
+One common convention is to place an underscore _ before the name of a property to mean that property should not be altered.
+
+*/
+/*GETTERS - Getters are methods that get and return the internal properties of an object. They can also do more than just retrieve an object.
+
+const person = {
+  _firstName: 'John',
+  _lastName: 'Doe',
+  get fullName() {
+    if (this._firstName && this._lastName){
+      return `${this._firstName} ${this._lastName}`;
+    } else {
+      return 'Missing a first name or a last name.';
+    }
+  }
+}
+// To call the getter method:
+person.fullName; // 'John Doe'
+
+We use the get keyword followed by a function. We use a conditional to see if both exist.
+
+We can use getters to perform an action on the data when getting a property. Getters can return different values using conditionals. In a getter we can access the properties of the calling object using this.
+Getter and setter methods cannot share the same name as the properties. It will cause a infinte call stack error.
+
+SETTERS - are methods which reassign values of existing properties within an object.
+
+const person = {
+  _age: 37,
+  set age(newAge){
+    if (typeof newAge === 'number'){
+      this._age = newAge;
+    } else {
+      console.log('You must assign a number to age');
+    }
+  }
+};
+person.age = 40;
+console.log(person._age); // Logs: 40
+
+Like getter methods there are similar advantages that include checking input, performing actions on properties and displaying a clear intention for how the object is supposed to be used.
+
+FACTORY FUNCTIONS - allow us to create many instances of an object quickly. A factory function is a function that returns an object and can be reused to make multiple object instances. Factory functions have parameters to customise the object that gets returned.
+
+const factoryFunction = (name, age) => {
+	const person = {
+		name: name,
+    age: age
+    }
+  return this.ojectName.push(person);
+}
+
+const ben = factoryFunction("Ben", 24)
+
+ES6 introduced shortcuts for assigning properties to variables known as destructuring. Instead of assigning ecah property with a key and value even though they share the same name. One shortcut we can use is the destructuring technique called propety value shorthand.
+
+const factoryFunction = (name, age) => {
+	return {
+		name,
+    age
+    }
+}
+
+Another destructuring technique is called destructured assignment. In destructured assignment we create a variable with the name of an objects key that is wrapped in {} and assign it to the object.
+
+const {age} = ben; //Would return 24.
+
+We can even use destructured assignment to grab nested properties of an object.
+
+BUILT IN OBJECT METHODS
+
+There are many inbuilt methods for objects. For example .hasOwnProperty(), valueOf(), Object.keys(), Object.entries(), Object.assign().
+
+*/
+
 
 //ITERATORS - JavaScript provides a number of ways of iterating over a collection, from for loops, while loops, to forEach(), map() etc.
 
