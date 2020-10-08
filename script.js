@@ -262,6 +262,8 @@ Block Scope - When a variable is defined inside a block. That variable has block
 Scope Pollution - Having too many global variables can cause problems in a program. Scope pollution is when we have too many global variables that exist in the global namespace. Scope pollution makes it difficult to keep track of our different variables and sets up potential accidents.
 */
 
+
+
 /*Arrays - Are JavaScripts way of making lists. Arrays can store any data type. Array elements are numbered starting from 0. The difference between arrays and objects is that arrays are ordered. Arrays are created using []. Arrays are useful for storing a list of something: users, goods, HTML elements etc. Arrays provide ways to manage the order of elements unlike objects.
 
 Some programming langauages allow arrays with named indexs, these are called associative arrays (or hashes). JavaScript only has numbered arrays and does not support associative arrays.
@@ -288,22 +290,6 @@ mixedArray[5]();//Calling the function from the array.
 
 console.log(mixedArray);
 
-/*Sort - The sort() method sorts arrays alphabetically.
-The reverse() method reverses the elements in an array you can use it to sort an array in descending order.
-
-Numeric Sort - By default the sort() method sorts strings. However when we try to sort numbers like strings "25 is sorted higher than 100 because 2 is greater than 1". Because of this sort() method will produce incorrect results when sorting.  We can use a compare function to fix this.
-
-let numbers = [100, 45, 62 , 76, 909, 23, 97, 53, 32, 16, 36, 111];
-sortNumeric();
-function sortNumeric() {
-    numbers.sort(function (a, b){
-        return a - b;
-    });
-}
-The compare function compares all the values in an array two at a time.
-e.g. 40 - 100 = -60 so 40 is sorted at a lower value than 100.
- */
-
 //Nested arrays - We can store arrays in other arrays. When an array contains another array it is known as a nested array. To access arrays we use the [] with the index value.
 
 let nestedArr = [[1], [2, 3]];
@@ -311,6 +297,8 @@ let nestedArr = [[1], [2, 3]];
 console.log(nestedArr[1]); // Output: [2, 3] nestedArr[1] will grab the element in index 1 which is array [2, 3].
 
 console.log(nestedArr[1][0]); // Output: 2 We can chain on more index values.
+
+
 
 /*OBJECTS - Objects in Comparison to primitive data types are used to store collections of various data types and more complex entities such as arrays and functions.
 Objects are created using {} a propety is a 'key value' pair and the value can be anything. key: value.
@@ -356,7 +344,6 @@ const car = {
 car.calcAge();
 console.log(car);
 
-
 //Method Borrowing - Is a very common practise which allows us to use the methods of one object on a different object without having to copy and maintain it in two seperate places.
 let matthew = {
   name: 'matthew',
@@ -372,7 +359,6 @@ let mike = {
   name: 'mike',
   yearOfBirth: 1984
 }
-
 
 mike.calcAge = matthew.calcAge;//We are copying the calcAge function from the matthew method to the mike method without having to copy the code.
 mike.calcAge();
@@ -452,7 +438,19 @@ BUILT IN OBJECT METHODS
 
 There are many inbuilt methods for objects. For example .hasOwnProperty(), valueOf(), Object.keys(), Object.entries(), Object.assign().
 
+THE FOR IN LOOP
+The for in loop is a special form of loop used to loop over all keys of an object.
+
+for (key in users) { //key in object
+  console.log(key); //will print keys
+  console.log(users[key]) //will print key properties
+}
+
+
+
 */
+
+
 
 
 //ITERATORS - JavaScript provides a number of ways of iterating over a collection, from for loops, while loops, to forEach(), map() etc.
@@ -523,7 +521,7 @@ for (let i = 0; i < nick.length; i++) {
   if (typeof nick[i] !== 'string') continue;//The loop will skip one iteration if element is not a string
   console.log(nick[i]); //'nick', 'smith', 'designer'
 
-ITERATOR METHODS
+ITERATOR ARRAY METHODS
 
 .forEach() method - is used to call a provided function once for each element in an array in order.
 
@@ -561,27 +559,34 @@ function indexOfAnimals(animal) {
 }
 console.log(elephantPostion); //Prints 6 position of elephant in array.
 
+.sort() = this method sorts arrays alphabetically.
+The .reverse() method reverses the elements in an array you can use it to sort an array in descending order.
+
+Numeric Sort - By default the sort() method sorts strings. However when we try to sort numbers like strings 25 is sorted higher than 100 because 2 is greater than 1. Because of this sort() method will produce incorrect results when sorting.  We can use a compare function to fix this.
+
+let numbers = [100, 45, 62 , 76, 909, 23, 97, 53, 32, 16, 36, 111];
+
+function sortNumeric(arr) {
+    const sorted = arr.sort(function (a, b){
+        return a - b;
+    });
+    return sorted;
+}
+
+console.log(sortNumeric(numbers));
+
+The compare function compares all the values in an array two at a time.
+e.g. 40 - 100 = -60 so 40 is sorted at a lower value than 100.
+
 .reduce() = is a method that returns a single value after iterating through the elements of an aray, thereby reducing the array. The callback function takes two values the accumulator and the current value. The value of the accumulator starts off as the value of as the value of the first element in the array and the current value starts as the second value. As reduce() iterates through the array the accumulator value becomes the return value of the callback function for the next iteration.
+
+const euros = [29.76, 41.85, 46.5];
+const sum = euros.reduce((total, amount) => total + amount); 
+sum // 118.11
 
 Other iterators include .some() and .every.
 .some() = tests whether at least one element in an array passes the test implemented by the problem. It returns a boolean value.
 
 .every() = Method tests whether all elements in the array pass the test implemented by the provided function. It returns a boolean value.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 */
