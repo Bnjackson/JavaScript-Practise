@@ -67,11 +67,12 @@ console.log(++counter); //3 Returns the incremented value.
 2 >= 1 //greater than or equal too
 5 == '5'//Equal value, type coercion, data types do not have to match
 1 === 1 //Equal value, same type
-1 !== 2 //Not equal too
+1 != 2 //Not equal too, with type coercion
+1 !== 2 //Not equal strict without type coercion
 */
 
 /*Logical Operators - Boolean Logic
-&& - The and operator checks if the conditions are true before running
+&& - The and operator checks if the conditions on its left and right are true before running
 || - The or operator Only requires one condition to be true
 !  - The not operator inverts true or false values.
 */
@@ -137,8 +138,14 @@ johnsAge >= drinkingAge ? console.log('John can drink'); //conditon ? expression
 
 let drink = johnsAge >= 18 ? 'beer' : 'water';// The result will be assigned to the drink variable
 
+//Ternary operators can be used as alternatives to if and else statements.
+function equilibrium (x) {
+	return (x > 0) ? "positive"
+	:(x < 0) ? "negative"
+	: true;
+}
 
-//Switch Statements provide an altenrative syntax that is easier to read and write. A switch statement is useful when having to write many else if statements.
+//Switch Statements provide an altenrative syntax that is easier to read and write. A switch statement is useful when having to write many else if statements. If a break is ommited from a case the following case statements are executed until a break is encountered.
 
 const groceryItem = 'tomato';
 switch (groceryItem) {
@@ -175,6 +182,37 @@ showMessage(); //We have to call the function to run it.
 //Outer variables - A function can access an outer variable it can also edit external variables. To make code clean it is recommended to use mainly local variables and parameters in the function not outer varibles.
 
 //Parameters (function arguments) - A parameter is a named variable passed into a function. Parameter variables are used to import arguments into functions. If a parameter value is not provided then its value becomes undefined. Parameters are seperated by a comma.
+
+//Default parameters - The default parameter kicks in when the argument is not specified.
+
+const greeting = (name = "Anonymous") => "Hello " + name;
+
+console.log(greeting("John")); // Hello John
+console.log(greeting()); // Hello Anonymous
+
+//The rest parameter allows us to represent an indefinite number of arguments as an array. A function can be prefixed with ... which will cause all remaining arguments to be placed within a array.
+
+function sum(...theArgs) {
+  return theArgs.reduce((previous, current) => {
+    return previous + current;
+  });
+}
+
+console.log(sum(1, 2, 3));
+// expected output: 6
+
+console.log(sum(1, 2, 3, 4));
+// expected output: 10
+
+//Spread operator - ES6 introduces the spread operator, which allows us to expand arrays and other expressions in places where multiple parameters or elements are expected.
+
+function sum(x, y, z) {
+  return x + y + z;
+}
+const arrayNumbers = [1, 2, 3];
+
+console.log(sum(...arrayNumbers));
+//expected output: 6
 
 //Returning (calling) a function - A function can return a value by using the return keyword in a function and then calling the function e.g.
 
@@ -216,7 +254,6 @@ const sayHi = function() {
 // A statement is a standalone unit of execution it does not return anything.
 // A declaration is a statement in which a value is assigned to a variable. All declarations are statements but not all statements are declarations.
 
-
 //Function expression vs function declaration
 
 function functionDeclaration(a, b) {
@@ -236,11 +273,17 @@ myButton.onclick = function() {
   alert('hello');
 }
 */
-//Arrow Functions: Theres another simple and concise way to create functions. Its called "arrow functions".
+//Arrow Functions: Theres another simple and concise way to create functions. Its called "arrow functions". If a arrow function has a single parameter the parentheses can be omitted.
+
+const myFunction = item => item;
+//When there is no function body, and only a return value we can omit the return keyword as well as the brackets surrounding the code.
+
 
 let arrowFunction = (argument1, argument2) => {
   expression;
 };
+
+
 //its a shorter version of this
 
 let func = function(arg1, arg2, ...argN) {
@@ -302,6 +345,8 @@ console.log(nestedArr[1][0]); // Output: 2 We can chain on more index values.
 
 /*OBJECTS - Objects in Comparison to primitive data types are used to store collections of various data types and more complex entities such as arrays and functions.
 Objects are created using {} a propety is a 'key value' pair and the value can be anything. key: value.
+
+Objects can be used to organize code better instead of using multiple variables we can store things in a single object.
 */
 const ben = { // an object
   firstName:'Ben', //by key 'firstName' value 'ben'
@@ -320,6 +365,9 @@ ben.age = 29;//We can also mutate
 ben["Favourite Film"] = Big Lebowski; //We use [] to create multiword propety names.
 delete ben.job; //We can delete a property from an object with the delete operator.
 */
+
+//THIS
+
 /*this keyword - Refers to the object it belongs to.
 This has different values depending on where it is used
   In a method this refers to the object owner.
@@ -368,6 +416,8 @@ console.log(mike);//The mike method now contains the calcAge function from the m
 
 One common convention is to place an underscore _ before the name of a property to mean that property should not be altered.
 
+We can use the Object.freeze(obj) to freeze an object preventing new properties from being added to it and existing properties from being removed.
+
 */
 /*GETTERS - Getters are methods that get and return the internal properties of an object. They can also do more than just retrieve an object.
 
@@ -407,6 +457,34 @@ console.log(person._age); // Logs: 40
 
 Like getter methods there are similar advantages that include checking input, performing actions on properties and displaying a clear intention for how the object is supposed to be used.
 
+OBJECT CONSTRUCTORS - If we were creating a online shopping site with a large inventory manually typing out all those objects is not feasible. A better way to create them is using an object constructor which is a function that looks like this:
+
+function Player(name, score) {
+  this.playerName = name;
+  this.playerScore = score;
+}
+
+The object constructors name should begin with a capital.
+you call using the keyword new
+
+const player = new Player("steve", 24);
+
+Constructor for book object we can also add methods to constructor functions.
+You can not add a new property to an existing object constructor like you would a object using dot or bracket notation. To add a new property you must add it to the constructor function.
+
+function Book(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+    this.info = function() {
+        return this;
+    }
+}
+
+const janeEyre = new book("Jane Eyre", "Charlotte Bronte", 300, "I have read");
+console.log(janeEyre.info())
+
 FACTORY FUNCTIONS - allow us to create many instances of an object quickly. A factory function is a function that returns an object and can be reused to make multiple object instances. Factory functions have parameters to customise the object that gets returned.
 
 const factoryFunction = (name, age) => {
@@ -445,13 +523,7 @@ for (key in users) { //key in object
   console.log(key); //will print keys
   console.log(users[key]) //will print key properties
 }
-
-
-
 */
-
-
-
 
 //ITERATORS - JavaScript provides a number of ways of iterating over a collection, from for loops, while loops, to forEach(), map() etc.
 
@@ -581,7 +653,7 @@ e.g. 40 - 100 = -60 so 40 is sorted at a lower value than 100.
 .reduce() = is a method that returns a single value after iterating through the elements of an aray, thereby reducing the array. The callback function takes two values the accumulator and the current value. The value of the accumulator starts off as the value of as the value of the first element in the array and the current value starts as the second value. As reduce() iterates through the array the accumulator value becomes the return value of the callback function for the next iteration.
 
 const euros = [29.76, 41.85, 46.5];
-const sum = euros.reduce((total, amount) => total + amount); 
+const sum = euros.reduce((total, amount) => total + amount);
 sum // 118.11
 
 Other iterators include .some() and .every.
