@@ -471,7 +471,7 @@ const player = new Player("steve", 24);
 
 Constructor for book object we can also add methods to constructor functions.
 You can not add a new property to an existing object constructor like you would a object using dot or bracket notation. To add a new property you must add it to the constructor function.
-
+*/
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
@@ -483,8 +483,54 @@ function Book(title, author, pages, read) {
 }
 
 const janeEyre = new book("Jane Eyre", "Charlotte Bronte", 300, "I have read");
-console.log(janeEyre.info())
 
+/*The prototype -
+Prototypes are unique to JavaScript, JS works with objects in a very specific way.
+
+Prototypes are shared  objects that have properties and methods that can be accessed via a range of different objects.
+
+Prototypes allow us to save space and use less code, instead of having the same methods or properties in each instance we can add the methods or properties directly to the constructor prototype. So the methods and properties are stored in one place but can be accessible by all tthe objects created by the constructor.
+
+All JavaScript objects inherit properties and methods from a prototype.
+    Date objects inherit prototypes from Date.prototype
+    Array objects inherit protoypes from Array.prototype
+    Objects inherit prototypes from Object.prototype
+
+The Object.prototype is on the top of the prototype inheritance chain:
+Date objects and Array objects inherit from Object.prototype.
+
+We can modify the prototype property of a constructor function methods added to the object are then availible on all object instances created from the constructor.
+*/
+Book.prototype.authorNationality = () => {
+    console.log("English");
+}
+janeEyre.authorNationality();
+
+console.log(janeEyre.info());
+
+/*Recommended Method for Prototypal Inheritance
+The recommended way of setting the prototype of an object is Object.create, which very simply returns a new object with the specified prototype and any additional properties you want to add. For our purposes you use it like so:
+*/
+
+function Student() {
+}
+
+Student.prototype.sayName = function() {
+  console.log(this.name)
+}
+
+function EighthGrader(name) {
+  this.name = name
+  this.grade = 8
+}
+
+EighthGrader.prototype = Object.create(Student.prototype)
+
+const carl = new EighthGrader("carl")
+carl.sayName() // console.logs "carl"
+carl.grade // 8
+
+/*
 FACTORY FUNCTIONS - allow us to create many instances of an object quickly. A factory function is a function that returns an object and can be reused to make multiple object instances. Factory functions have parameters to customise the object that gets returned.
 
 const factoryFunction = (name, age) => {
