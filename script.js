@@ -482,7 +482,7 @@ function Book(title, author, pages, read) {
     }
 }
 
-const janeEyre = new book("Jane Eyre", "Charlotte Bronte", 300, "I have read");
+const janeEyre = new Book("Jane Eyre", "Charlotte Bronte", 300, "I have read");
 
 /*The prototype -
 Prototypes are unique to JavaScript, JS works with objects in a very specific way.
