@@ -303,9 +303,46 @@ Global Scope - Variables are declared outside of blocks. These variables are cal
 Block Scope - When a variable is defined inside a block. That variable has block scope because it is only accesible to the lines of code within that block. Variables that are declared with block scope are known as local variables.
 
 Scope Pollution - Having too many global variables can cause problems in a program. Scope pollution is when we have too many global variables that exist in the global namespace. Scope pollution makes it difficult to keep track of our different variables and sets up potential accidents.
+
+Closures: A closure is the combination of a function and the lexical enviroment which that function was declared. In other words a closure gives you access to an outer functions scope from an inner function.
+Closures are created every time a function is created, at function creation time.
+To use a closure define a function inside another function and expose it. To expose a function return it or pass it to another function.
+The inner function will have access to the variables in the outer function even after the outer function has returned.
+
+Closures are commonly used to give objects data privacy.
 */
 
+const sayHello = function (name) {
+  const text = "Hello, " + name;
+  return function () {
+    console.log(text);
+  };
+};
 
+let a = 1;
+
+function foo() {
+  let b = 2; // variable in function scope the parent scope does not have access.
+  let a = 2; //Name conflict/ scope conflict a is defined in both the parent and the child scope. Two a variables in existence.
+  console.log(a);
+}
+//Because b is defined in the function and not in the root scope we can not access it outside of the function.
+
+foo(); //2
+console.log(a); // runs the a in global scope. //1
+
+sayHello("Adam");
+//The closure concept we have used here makes our scope inside sayHello inaccessible to the public scope. Calling the function will do nothing as it returns a function.
+
+sayHello("Adam")();
+//We can call a closure using a second set of () to call the returned function. Or by assigning it and then calling it e.g. const helloTod = sayHello("Todd"); helloTod();
+
+/*We can use the methods call(), apply() and .bind() to change scope depending on what you are looking to do.
+
+//Private Variables and Functions
+
+Other languages have public and private scope, in JS there is no such thing. We can emulate public and private scope through things like closures.
+*/
 
 /*Arrays - Are JavaScripts way of making lists. Arrays can store any data type. Array elements are numbered starting from 0. The difference between arrays and objects is that arrays are ordered. Arrays are created using []. Arrays are useful for storing a list of something: users, goods, HTML elements etc. Arrays provide ways to manage the order of elements unlike objects.
 
