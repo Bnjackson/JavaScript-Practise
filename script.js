@@ -30,8 +30,8 @@ Null - Also means 'non-existenet' empty or value unknown.
 BigInt - Represents numbers larger than the JavaScript limit.
 
 We can use the typeof operator to return the data type.
-console.log(typeof 42) //number
 */
+console.log(typeof 42) //number
 
 //Operators are used to assign values, compare values, perform arithmetic operations and more.
 
@@ -102,14 +102,16 @@ Assignment operators are used to assign values to variables
 
 //conditional statements - Will perform different actions for different conditions.
 
-const colour = 'red', hexCode = '#f00', secondColour = 'blue';
-if (colour === 'blue' && hexCode === '#f00' && secondColour === 'blue') {
-  console.log('They are all true');
-}else if (colour === 'blue' || hexCode === '#f001' || secondColour === 'blue') {
-  console.log('Atleast one of the three is true');
-}else {
-  console.log('!ERROR!')
-};
+const colour = "blue";
+if (colour === "red") {
+  console.log("The colour is red!");
+}
+else if (colour === "blue") {
+  console.log("The colout is blue!");
+}
+else {
+  console.log("The colour is neither red nor blue.")
+}
 
 const randomNumber = Math.floor(Math.random() * 5); //Math.floor rounds down a number, Math.random gets a random number between 0 and 1.
 console.log(randomNumber);
