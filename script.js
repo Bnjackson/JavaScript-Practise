@@ -111,7 +111,7 @@ else if (colour === "blue") {
 }
 else {
   console.log("The colour is neither red nor blue.")
-}
+};
 
 const randomNumber = Math.floor(Math.random() * 5); //Math.floor rounds down a number, Math.random gets a random number between 0 and 1.
 console.log(randomNumber);
@@ -269,12 +269,13 @@ const functionExpression = function(a, b) {
 //Function expression: a function created inside an expression or another syntax construct. Expressions can be useful for callback functions and have the benefits of being contained in a variable.
 
 /*Anonymous Functions - An Anonymous function is a function without a name it wont do anything on its own. You generally use an Anonymous function with an event handler, so the function runs in response to an event such as a button being clicked.
+*/
 const myButton = document.querySelector('button');
 
 myButton.onclick = function() {
   alert('hello');
 }
-*/
+
 //Arrow Functions: Theres another simple and concise way to create functions. Its called "arrow functions". If a arrow function has a single parameter the parentheses can be omitted.
 
 const myFunction = item => item;
