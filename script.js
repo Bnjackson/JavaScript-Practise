@@ -47,7 +47,7 @@ console.log(typeof 42) //number
 */
 
 /*
-Increment and decrement operators can be applied both before and after the operator. Both postfix and prefix increase or decrease the value by 1. The ++ or -- can be applied both before and after the variable .
+Increment and decrement operators can be applied both before and after the operator. Both postfix and prefix increase or decrease the value by 1. The ++ or -- can be applied both before and after the variable.
 
 Postfix - counter++ - The postfix form returns the original value of the variable of the variable before the increment/decrement
 
