@@ -12,7 +12,6 @@ let age = 28;
 
 console.log(firstName + ' ' + age);//Type coercion JavaScript automatically converts types from one to another when needed. The number is converted into a string.
 
-
 let job, isMarried;
 job = 'teacher';
 isMarried = false;
