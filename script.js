@@ -261,6 +261,7 @@ const sayHi = function() {
 function functionDeclaration(a, b) {
   return a + b;
 }
+
 //Function declaration: a function declared as a seperate statement in the main code flow. Declarations have global scope declarations are visible throughtout the code. They can be called before they are declared. Declarations are usually used more than expressions as they more readable and provide more freedom.
 
 const functionExpression = function(a, b) {
