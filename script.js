@@ -46,9 +46,6 @@ console.log(typeof 42) //number
 --	Decrement
 */
 
-let value = 24;
-console.log(value);
-
 /*
 Increment and decrement operators can be applied both before and after the operator. Both postfix and prefix increase or decrease the value by 1. The ++ or -- can be applied both before and after the variable.
 
