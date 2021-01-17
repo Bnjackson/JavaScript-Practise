@@ -35,6 +35,8 @@ console.log(typeof 42) //number
 
 //Operators are used to assign values, compare values, perform arithmetic operations and more.
 
+
+
 /* Math Operators
 +	Addition
 -	Subtraction
@@ -45,6 +47,7 @@ console.log(typeof 42) //number
 ++	Increment
 --	Decrement
 */
+
 
 /*
 Increment and decrement operators can be applied both before and after the operator. Both postfix and prefix increase or decrease the value by 1. The ++ or -- can be applied both before and after the variable.
