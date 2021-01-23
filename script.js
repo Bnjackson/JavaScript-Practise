@@ -229,7 +229,6 @@ age = prompt('How old are you', 18);
 
 if(checkAge(age)) {
   console.log('Acess granted')
-  
 } else {
   console.log('Acess denied')
 }
