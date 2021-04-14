@@ -50,15 +50,15 @@ console.log(typeof 42) //number
 Increment and decrement operators can be applied both before and after the operator. Both postfix and prefix increase or decrease the value by 1. The ++ or -- can be applied both before and after the variable.
 
 Postfix - counter++ - The postfix form returns the original value of the variable of the variable before the increment/decrement
-
+*/
 let counter = 2;
 console.log(counter++); //2 Returns the original value prior to the increment.
 
-Prefix - ++counter - The prefix form returns the value after the increment/decrement.
+//Prefix - ++counter - The prefix form returns the value after the increment/decrement.
 
 let counter = 2;
 console.log(++counter); //3 Returns the incremented value.
-*/
+
 
 /*Comparison Operators
 1 < 2 //Less than
@@ -77,6 +77,10 @@ console.log(++counter); //3 Returns the incremented value.
 !  - The not operator inverts true or false values.
 */
 
+//Short-circuit evaluation is when the second argument is executed or evaluated only if the first argument does not suffice to determine the value of the expression. When the fist argument of && is false the overall value must be false and when the first argument of || is true then the overall value must be true.
+
+let trueOrFalse = true || false; //The value will be true because an || operator only reuires one true argument.
+
 /*Assignment operators
 Assignment operators are used to assign values to variables
 = - Assigns a value to a variable
@@ -92,7 +96,14 @@ Assignment operators are used to assign values to variables
 += - Also used to add strings together.
 */
 
-//Truthy and Falsy - Each value has an inherent boolean value known as a truthy or falsy.
+//Truthy and Falsy - Each value has an inherent boolean value known as a truthy or falsy. They can be used to check if a variable exists for example to check if a user has a username.
+
+let defaultName;
+if (username) {
+  defaultName = username;
+} else {
+  defaultName = 'Stranger';
+}
 
 //Falsy Values: undefined, null, false, 0, '' or "" (empty string), NaN. - Values considered false when evaluated in an if else statement.
 
@@ -168,8 +179,8 @@ switch (groceryItem) {
 }
 
 /*
-A JavaScript function is a block of code designed to perform a particular task. A function is executed when something evokes it. Functions can be reused as many times as you like after defining them. They can be used with different arguments, to produce different results.
-Functions can access external data but the opposite isnt true. Other code can not look insdie a function.
+A function is a reusable block of code that groups together a sequence of statements to perform a specific task. A function is executed when something evokes it. They can be used with different arguments, to produce different results.
+Functions can access external data but the opposite isnt true. Other code can not look inside a function.
 A function should do exactly what is suggested by its name and no more. Two independent actions requires two functions.
 */
 
@@ -233,6 +244,18 @@ if(checkAge(age)) {
   console.log('Acess denied')
 }
 
+/*Helper Functions - Are functions that are called and return a value for another function. Helper functions are used to make programs easier to read and lets you reuse computations.
+*/
+function multiplyByNineFifths(number) {
+  return number * (9/5);
+};
+
+function getFahrenheit(celsius) {
+  return multiplyByNineFifths(celsius) + 32;
+};
+
+getFahrenheit(15); // Returns 59
+
 /*Naming a function - Functions are actions so their name is usually a verb. It should be brief as accurate possible and describe what the function does, so that someone who reads the code gets an indication of what the function.
 For instance....
 show - shows something
@@ -277,9 +300,11 @@ myButton.onclick = function() {
   alert('hello');
 }
 
-//Arrow Functions: Theres another simple and concise way to create functions. Its called "arrow functions". If a arrow function has a single parameter the parentheses can be omitted.
+//Arrow Functions: Theres another simple and concise way to create functions. Its called "arrow functions". If a arrow function has a single parameter the parentheses and the return keyword can be omitted.
 
-const myFunction = item => item;
+helloWorld = (name) => console.log(`${name} Hello World!`);
+
+helloWorld("John");
 //When there is no function body, and only a return value we can omit the return keyword as well as the brackets surrounding the code.
 
 
@@ -383,12 +408,12 @@ console.log(nestedArr[1]); // Output: [2, 3] nestedArr[1] will grab the element 
 console.log(nestedArr[1][0]); // Output: 2 We can chain on more index values.
 
 
-
 /*OBJECTS - Objects in Comparison to primitive data types are used to store collections of various data types and more complex entities such as arrays and functions.
 Objects are created using {} a propety is a 'key value' pair and the value can be anything. key: value.
 
 Objects can be used to organize code better instead of using multiple variables we can store things in a single object.
 */
+
 const ben = { // an object
   firstName:'Ben', //by key 'firstName' value 'ben'
   lastName:'Jackson', //by key 'lastName' value 'jackson'
@@ -396,8 +421,7 @@ const ben = { // an object
   family: ['Jane', 'Mark', 'Emily'],//Objects can store arrays
   'is Married': false, //We can create multiword propety names they must be quoted.
 };
-console.log(ben);
-/*
+
 console.log(ben.firstName); //We can access objects using dot notation
 const x = 'age';
 console.log(ben[x]); //Will print 24 useful logic for accessing data from an array.
@@ -405,7 +429,7 @@ ben.job = 'programmer';//We can add to the object using name.key = value
 ben.age = 29;//We can also mutate
 ben["Favourite Film"] = Big Lebowski; //We use [] to create multiword propety names.
 delete ben.job; //We can delete a property from an object with the delete operator.
-*/
+
 
 //THIS
 
@@ -605,12 +629,15 @@ There are many inbuilt methods for objects. For example .hasOwnProperty(), value
 
 THE FOR IN LOOP
 The for in loop is a special form of loop used to loop over all keys of an object.
-
+*/
 for (key in users) { //key in object
   console.log(key); //will print keys
   console.log(users[key]) //will print key properties
 }
-*/
+
+/*****
+LOOPS & ITERATORS
+*****/
 
 //ITERATORS - JavaScript provides a number of ways of iterating over a collection, from for loops, while loops, to forEach(), map() etc.
 
@@ -637,24 +664,40 @@ for (let i = 0; i < animals.length; i++){
 }
 
 /*Looping through Objects: We cannot loop through a object like we would an array becuase the key value pairs in objects are not ordered. The solution for iterating through objects with the for...in syntax
-
+*/
 const object = { a: 1, b: 2, c: 3 };
 
 for (const property in object) {
   console.log(`${property}: ${object[property]}`);
 }// expected output:// "a: 1"// "b: 2"// "c: 3"
-*/
 
-/*Nested loops - When we have loops running inside another loop that is called a nested loop. One use for a nested loop is to compare the elements in two arrays. For each round of the outer for loop, the inner for loop will run completely.
+//Nested loops - When we have loops running inside another loop that is called a nested loop. One use for a nested loop is to compare the elements in two arrays. For each round of the outer for loop, the inner for loop will run completely.
 
-While loop - While the condition is true the loop will execute. while loops are used when we dont know how many times the loop should run. While loops can create infinite loops that should be avoided as they can use too much processing power.
+//for...of loop is an alternative to a for loop. It has simpler syntax and is more readable however it is also more limited than for loops for example you can not interate through an array in reverse , access indices of an element, set a counter etc.
+
+const animals = ["Lion", "Wolf", "Frog", "Deer", "Fish", "Squirrel", "Tiger", "Cat", "Dog"];
+
+for(const animal of animals) {//Animal refers to the individaul element.
+  if (animal === "deer") {
+    continue;//The continue keyword is used to skip one iteration of the loop deer in this example.
+  }
+  if (animal === "Cat") {
+    break;//We can also use the break statement to end a loop. In this example when the loop reaches "cat".
+  }
+  console.log(animal);//Will print all array elements.
+}
+
+
+
+// While loop - While the condition is true the loop will execute. while loops are used when we dont know how many times the loop should run. While loops can create infinite loops that should be avoided as they can use too much processing power.
+
 let i = 0;
 while (i < 4) {
 console.log(i);
 i++;
 }
 
-do...while statements - In some cases you want a piece of code to run at least once and then loop based on specific condition after its intial run. A do...while statement will run until a specified condition is no longer met.
+//do...while statements - In some cases you want a piece of code to run at least once and then loop based on specific condition after its intial run. A do...while statement will run until a specified condition is no longer met.
 
 let i = 0;
 do {
@@ -662,12 +705,12 @@ do {
   i++;
 } while (i < 3);
 
-looping backwards -
+//looping backwards -
 const nick = ['Nick', 'Smith', 1990, 'designer', false];
 for (let i = nick.length - 1; i >= 0; i--) {
   console.log(nick[i]);
 
-break - The break keyword allows programs to break("end") out of the loop from within the loops block. Break allows us to stop a loop even if the stopping condition is not met.
+//break - The break keyword allows programs to break("end") out of the loop from within the loops block. Break allows us to stop a loop even if the stopping condition is not met.
 
 const nick = ['Nick', 'Smith', 1990, 'designer', false];
 for (let i = 0; i < nick.length; i++) {
@@ -680,16 +723,16 @@ for (let i = 0; i < nick.length; i++) {
   if (typeof nick[i] !== 'string') continue;//The loop will skip one iteration if element is not a string
   console.log(nick[i]); //'nick', 'smith', 'designer'
 
-ITERATOR ARRAY METHODS
+//ITERATOR ARRAY METHODS
 
-.forEach() method - is used to call a provided function once for each element in an array in order.
+.forEach()// method - is used to call a provided function once for each element in an array in order.
 
 const array = ['a', 'b', 'c'];
 array.forEach(printArray);
 function printArray(element) { //The element parameter refers to the array.
 console.log(element)} //Prints ['a', 'b', 'c'];
 
-.map() method = Creates a new array with the results of calling a provided function once for every array element.
+.map() //method = Creates a new array with the results of calling a provided function once for every array element.
 
 const bigNumbers = [100, 200, 300, 400, 500];
 const smallNumbers = bigNumbers.map(divideNumbers);
@@ -698,7 +741,7 @@ function divideNumbers(num) {
 }
 console.log(smallNumbers); //Prints [1, 2, 3, 4, 5]
 
-.filter() = Like .map() this method returns a new array. However .filter() returns an array of elements after filtering out certain elements from the original array. filter() calls a fallback function for each elememt in array and constructs a new array of all the values for which the callback returns true.
+.filter()//Like .map() this method returns a new array. However .filter() returns an array of elements after filtering out certain elements from the original array. filter() calls a fallback function for each elememt in array and constructs a new array of all the values for which the callback returns true.
 
 const randomNumbers = [375, 200, 3.14, 7, 13, 852];
 const smallNumbers = randomNumbers.filter(lessThan);
@@ -707,7 +750,7 @@ function lessThan (num) {
 }
 console.log(smallNumbers) //Print 200, 3.14, 7, 13
 
-.findIndex() = this method helps us find the location of an element in an array. Calling .findIndex() on an array will return the index of the first element that evaluates to true in the callback function. If there isnt a single element that satisfies the condition in the callback then findIndex() will return -1.
+.findIndex() //this method helps us find the location of an element in an array. Calling .findIndex() on an array will return the index of the first element that evaluates to true in the callback function. If there isnt a single element that satisfies the condition in the callback then findIndex() will return -1.
 
 const animals = ["hippo", "giraffe", "tiger", "lion", "seal", "monkey", "elephant"]
 
@@ -718,10 +761,10 @@ function indexOfAnimals(animal) {
 }
 console.log(elephantPostion); //Prints 6 position of elephant in array.
 
-.sort() = this method sorts arrays alphabetically.
-The .reverse() method reverses the elements in an array you can use it to sort an array in descending order.
+.sort() //this method sorts arrays alphabetically.
+.reverse() //this method reverses the elements in an array you can use it to sort an array in descending order.
 
-Numeric Sort - By default the sort() method sorts strings. However when we try to sort numbers like strings 25 is sorted higher than 100 because 2 is greater than 1. Because of this sort() method will produce incorrect results when sorting.  We can use a compare function to fix this.
+Numeric Sort  //By default the sort() method sorts strings. However when we try to sort numbers like strings 25 is sorted higher than 100 because 2 is greater than 1. Because of this sort() method will produce incorrect results when sorting.  We can use a compare function to fix this.
 
 let numbers = [100, 45, 62 , 76, 909, 23, 97, 53, 32, 16, 36, 111];
 
@@ -734,18 +777,108 @@ function sortNumeric(arr) {
 
 console.log(sortNumeric(numbers));
 
-The compare function compares all the values in an array two at a time.
-e.g. 40 - 100 = -60 so 40 is sorted at a lower value than 100.
+//The compare function compares all the values in an array two at a time. e.g. 40 - 100 = -60 so 40 is sorted at a lower value than 100.
 
-.reduce() = is a method that returns a single value after iterating through the elements of an aray, thereby reducing the array. The callback function takes two values the accumulator and the current value. The value of the accumulator starts off as the value of as the value of the first element in the array and the current value starts as the second value. As reduce() iterates through the array the accumulator value becomes the return value of the callback function for the next iteration.
+.reduce()  //is a method that returns a single value after iterating through the elements of an aray, thereby reducing the array. The callback function takes two values the accumulator and the current value. The value of the accumulator starts off as the value of as the value of the first element in the array and the current value starts as the second value. As reduce() iterates through the array the accumulator value becomes the return value of the callback function for the next iteration.
 
 const euros = [29.76, 41.85, 46.5];
 const sum = euros.reduce((total, amount) => total + amount);
 sum // 118.11
 
 Other iterators include .some() and .every.
-.some() = tests whether at least one element in an array passes the test implemented by the problem. It returns a boolean value.
+.some()  //tests whether at least one element in an array passes the test implemented by the problem. It returns a boolean value.
 
-.every() = Method tests whether all elements in the array pass the test implemented by the provided function. It returns a boolean value.
+.every() //Method tests whether all elements in the array pass the test implemented by the provided function. It returns a boolean value.
 
+/****
+JAVASCRIPT INTERACTIVITY & THE DOM
+****/
+/* The Document Object Model or DOM for short is a tree-like structure that allows programmers to conceptualize hierarchy and access elements on a web page.
+The DOM is a logical tree-like Model that organizes a web page’s HTML Document as an Object. The DOM is seperate from JavaScript and is more of a link between the HTML webpage and the scripting language.
+
+//NODES
+The DOM tree is made up of nodes which are intersecting points in a tree that contains data. In the DOM tree the top most node is called the root node and it represents the HTML document starting with the <html> tag followed by the <head>, <body> and <footer> tags. A parent node is the node above the closest connected node. A child node is the same but beneath the closest connected node. There are nine different types of node objects such as element and text. We can use the DOM to access a node's attributes such as its class, id and inline style.
+
+- Everything in an HTML document is a node - nodes are objects that have many properties and methods attached to them. These properties and methods are the primary tools we use to manipulate our webpage with JavaScript.:
+*The entire document is a document node
+*Every HTML element is an element node
+*The text inside HTML elements are text nodes
+*Every HTML attribute is an attribute node(deprecated)
+*All comments are comment nodes
+
+ //USING THE DOM TO INTERACT WITH ELEMENTS
+
+innerHTML -
+ Using the DOM we can modify the contents of an element aswell as it's attributes and properties. We can use the innerHTML property to add or modify elements.
 */
+
+document.body.innerHTML = "We can reassign the inner HTML of the body element.";
+document.body.innerHTML = "<h2>We can also assign a h2 element as a child inside of the body element.</h2>"
+
+/*
+querySelector -
+If we want to access a specific element we can use the querySelector method to access an element with CSS selectors such as tag, class or an ID. It will return the first element that matches the selector.
+*/
+document.querySelector("p");
+document.querySelector(".class");
+document.querySelector("#id");
+
+//querySelectorAll is a method that returns a static nodeList representing a list of the documents elements that match the specified group of selectors. querySelectorAll can be used with a loop to apply styles, events or edit an element.
+
+const paragraphs = document.querySelectorAll("p");
+
+for (let i = 0; i < paragraphs.length; i++) {
+  paragraphs[i].style.color = "red";// This will loop through all paragraph elements and set there color to red.
+}
+
+/*
+getElementBy - if we want to access elements directly we can use the getElementBy methods which will return a live HTML element object.
+*/
+
+document.getElementById("ID");
+document.getElementsByClassName("CLASS");
+document.getElementsByTagName('ELEMENT-TYPE')
+
+/*
+Modifying elements -
+We can modify an elements CSS styles using the .style DOM property. The syntax follows an element.style.property format with the property representing a CSS property. We can use the .style property to change color, backgroundColor, font-size, font-family etc.
+*/
+let blueElement = document.querySelector(".blue");
+blueElement.style.backgroundColor = "blue";//CSS properties are written in camelcase rather than with a -(hyphen).
+
+/*
+Creating Elements and Inserting them -
+Just as the DOM allows us to modify existing elements it also allows for the creation of new ones.
+The .createElement(tagName) method creates a new element based on the specified tag name passed into it as an argument. We can assign classes, id's, text, attributes etc to a new element. We can then assign a newly created element in javascript to the DOM.
+*/
+
+//Creating and inserting elements into the DOM - createElement this only creates the element to add it to the webpage we have to append it or use the insertBefore method.
+
+let newDiv = document.createElement('div');
+
+//add class
+newDiv.className = 'new-div-class';
+
+//add id
+newDiv.id = 'new-div-id';
+
+//add attribute
+newDiv.setAttribute('title','New Div');
+
+//create text node
+let newDivText = document.createTextNode('Hello World');
+
+//add text to div
+newDiv.appendChild(newDivText);
+
+//Adding div made in JavaScript to the DOM
+
+let container = document.querySelector('header .container');
+let h1 = document.querySelector('header h1');
+
+//container.insertBefore(newDiv, h1);//takes two parameters what we are inserting and what we are inserting before
+
+console.log(newDiv);
+ 
+//We can remove an element from the DOM using this.
+parentNode.removeChild(div);
