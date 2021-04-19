@@ -793,7 +793,7 @@ Other iterators include .some() and .every.
 /****
 JAVASCRIPT INTERACTIVITY & THE DOM
 ****/
-/* The Document Object Model or DOM for short is a tree-like structure that allows programmers to conceptualize hierarchy and access elements on a web page.
+/* The Document Object Model or DOM for short is a tree-like structure that allows programmers to conceptualize hierarchy and access elements on a web page. The DOM is created when the page is loaded.
 The DOM is a logical tree-like Model that organizes a web page’s HTML Document as an Object. The DOM is seperate from JavaScript and is more of a link between the HTML webpage and the scripting language.
 
 //NODES
@@ -806,9 +806,10 @@ The DOM tree is made up of nodes which are intersecting points in a tree that co
 *Every HTML attribute is an attribute node(deprecated)
 *All comments are comment nodes
 
- //USING THE DOM TO INTERACT WITH ELEMENTS
-
-innerHTML -
+/****
+ USING THE DOM TO INTERACT WITH ELEMENTS
+****/
+/*.innerHTML -
  Using the DOM we can modify the contents of an element aswell as it's attributes and properties. We can use the innerHTML property to add or modify elements.
 */
 
@@ -816,14 +817,14 @@ document.body.innerHTML = "We can reassign the inner HTML of the body element.";
 document.body.innerHTML = "<h2>We can also assign a h2 element as a child inside of the body element.</h2>"
 
 /*
-querySelector -
+.querySelector -
 If we want to access a specific element we can use the querySelector method to access an element with CSS selectors such as tag, class or an ID. It will return the first element that matches the selector.
 */
 document.querySelector("p");
 document.querySelector(".class");
 document.querySelector("#id");
 
-//querySelectorAll is a method that returns a static nodeList representing a list of the documents elements that match the specified group of selectors. querySelectorAll can be used with a loop to apply styles, events or edit an element.
+//.querySelectorAll is a method that returns a static nodeList representing a list of the documents elements that match the specified group of selectors. querySelectorAll can be used with a loop to apply styles, events or edit elements.
 
 const paragraphs = document.querySelectorAll("p");
 
@@ -832,12 +833,14 @@ for (let i = 0; i < paragraphs.length; i++) {
 }
 
 /*
-getElementBy - if we want to access elements directly we can use the getElementBy methods which will return a live HTML element object.
+.getElementBy - if we want to access elements directly we can use the getElementBy methods which will return a live HTML element object.
 */
 
-document.getElementById("ID");
+document.getElementById("ID");//The function only returns one ID as ID's should be unique.
 document.getElementsByClassName("CLASS");
 document.getElementsByTagName('ELEMENT-TYPE')
+//.getElementsByClassName and .getElementsByTagName both return an array-like collection of elements. To access individual elements you have to iterate over them.
+
 
 /*
 Modifying elements -
@@ -847,12 +850,44 @@ let blueElement = document.querySelector(".blue");
 blueElement.style.backgroundColor = "blue";//CSS properties are written in camelcase rather than with a -(hyphen).
 
 /*
+Traversing the DOM-
+Is finding HTML elements on their relation to other elements. In the DOM hierarchy parent and children relationships are defined in relation to the position of the root node. Traversing the DOM is more effecient than previous methods as you do not have to search the entire DOM for an element.
+*/
+// parentNode;
+let itemList = document.querySelector('#items');
+
+console.log(itemList.parentNode);
+itemList.parentNode.style.backgroundColor = '#f4f4f4'; //changes the parent node.
+
+//childNodes - is usually not worth using as it lists text(whitespace) in the nodelist along with the childNodes.
+console.log(itemList.childNodes);
+
+//children - Only lists the elements and in a HTML collection instead of in a node list
+console.log(itemList.children);
+//console.log(itemList.children[1]);//To select a single element.
+//itemList.children[1].style.backgroundColor = 'yellow';
+
+//firstChild/lastChild - like the childNodes this includes text(whitespace)
+//console.log(itemList.firstChild);
+
+//firstElementChild/lastELementChild - Is the better method as it only list elements not text(whitespace)
+console.log(itemList.firstElementChild);
+//itemList.firstELementChild[1].style.color = 'blue';
+
+//nextSibling/previousSibling - Includes text(whitespace)
+//console.log(itemList.nextSibling);
+
+//nextElementSibling/previousElementSibiling - Choses the next sibling or the previous sibling - Siblings are elements who share the same parent.
+let listGroupItem = document.getElementsByClassName('list-group-item');
+console.log(listGroupItem[1].nextElementSibling);
+
+/*
 Creating Elements and Inserting them -
 Just as the DOM allows us to modify existing elements it also allows for the creation of new ones.
 The .createElement(tagName) method creates a new element based on the specified tag name passed into it as an argument. We can assign classes, id's, text, attributes etc to a new element. We can then assign a newly created element in javascript to the DOM.
 */
 
-//Creating and inserting elements into the DOM - createElement this only creates the element to add it to the webpage we have to append it or use the insertBefore method.
+//Creating and inserting elements into the DOM - createElement this only creates the element to add it to the webpage we have to append it or use the insertBefore or appendChild method.
 
 let newDiv = document.createElement('div');
 
@@ -876,9 +911,71 @@ newDiv.appendChild(newDivText);
 let container = document.querySelector('header .container');
 let h1 = document.querySelector('header h1');
 
-//container.insertBefore(newDiv, h1);//takes two parameters what we are inserting and what we are inserting before
+container.insertBefore(newDiv, h1);//takes two parameters what we are inserting and what we are inserting before
 
 console.log(newDiv);
- 
-//We can remove an element from the DOM using this.
+
+//We can remove an element from the DOM using the removeChild method.
 parentNode.removeChild(div);
+
+/*
+Events -
+You can add interactivity to DOM events by assigning a function to run based on an event. Events are user interactions and browser manipulations such as a page loading, a mouse click, a keyboard input etc.
+When a user does any of these actions they are causing the event to be fired or be triggered.
+After a specifc event fires on a specific element in the DOM an event handler function can be created to run as a response.
+
+.onclick property allows you to assign a function to run on a click event on an element.
+*/
+
+const button = document.getElementById("button");
+button.onclick = function() {button.style.backgroundColor = "blue"};
+
+/*
+.addEventListener() - method sets up a function that will be called whenever the specified event is delivered to the target. The DOM element that listens for the event is called the event target and function that runs is called the event handler.
+*/
+
+const eventTarget = document.getElementById("targetElement");
+
+eventTarget.addEventListener("click", function() {
+//this block of code will run when the click event happens on eventTarget element.
+});
+
+/*
+.onevent - is another way to register an event handler to an event target. .onevent is a property that can be set on a DOM element. After the event target the on is followed by the lowercased event type name for instance onclick. Unlike the .addEventListener we can only attach one event handler function to the event target.
+*/
+
+eventTarget.onclick = eventHandler;
+
+/*
+.removeEventListener() - Is a method used to reverse the addEventListener() method. This method stops the event target from listening for an event to fire. .removeEventListener needs both the exact event type and the name of the event handler to work. If .addEventListener was provided an anonymous function then that event listener cannot be removed.
+*/
+
+eventTarget.removeEventListener("click", eventHandler);
+
+/*
+Event Object Properties
+JavaScript stores events as event objects with their related datd and functionalities as properties and methods. When an event is triggered, the event object can be passed as an argument to the event handler function.
+*/
+
+function eventHandlerFunction(event){////When the click event is triggered the function will run and pass in the event object.
+  console.log(event.timeStamp);//The .timeStamp property will return the time when an event was triggered in miliseconds.
+}
+
+//Prevent default method cancels the events default action if it is cancelable. For example it will stop a submit button from submitting a form, clicking a link will prevent the link from following the url.
+
+function runEvent(event) {
+    e.preventDefault();
+}
+
+
+eventTarget.addEventListener("click", eventHandlerFunction);
+
+/*Some of the properties associated with event objects include...
+.target to reference the element that the event is registered to.
+.type to access the type of the event.
+.timeStamp to access when the event was triggered.
+*/
+
+/*
+Form Validation - is the process of checking the information submitted through a form adheres to expectations. Most data once submitted is stored in a databse or server side so it is important that the stored data is accurate. Unprotected forms can potentially allow for code injection this can leaves users data or even the site itself at risk. To specify patterns for the computer to recognize we use a special language called regular expressions or regex for short. A regular expression is a sequence of characters representing a pattern, we can use that pattern to match a string to confirm that data is formatted acceptably or even replace parts of strings with different characters. We can have front-end, client and backend validation.
+*/
