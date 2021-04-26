@@ -25,13 +25,17 @@ age = 'twenty eight';//The age variable is mutated from a number to a string.
 Number - Floating point, numbers for decimals and integers
 String - Sequence of characters, used for text. By using backticks(``) and ${} we can create a "extended functionality" quotes they allow us to embed variables and expressions into a string by wrapping them in `${}`
 Boolean - Logical data type that can be true or false rsult of comparisons.
-undefined - Data type of a variable that does not have a value yet
-Null - Also means 'non-existenet' empty or value unknown.
+undefined - Data type of a variable that does not have a value yet.
+Null - Also means 'non-existent' empty or value unknown.
 BigInt - Represents numbers larger than the JavaScript limit.
 
 We can use the typeof operator to return the data type.
+
+Structural types -
+Object - Data structure containing data and instructions for working with data.
+Function - Functions are a subclass of object.
 */
-console.log(typeof 42) //number
+console.log(typeof job) //string
 
 //Operators are used to assign values, compare values, perform arithmetic operations and more.
 
@@ -79,7 +83,7 @@ console.log(++counter); //3 Returns the incremented value.
 
 //Short-circuit evaluation is when the second argument is executed or evaluated only if the first argument does not suffice to determine the value of the expression. When the fist argument of && is false the overall value must be false and when the first argument of || is true then the overall value must be true.
 
-let trueOrFalse = true || false; //The value will be true because an || operator only reuires one true argument.
+let trueOrFalse = true || false; //The value will be true because an || operator only requires one true argument.
 
 /*Assignment operators
 Assignment operators are used to assign values to variables
@@ -118,7 +122,7 @@ if (colour === "red") {
   console.log("The colour is red!");
 }
 else if (colour === "blue") {
-  console.log("The colout is blue!");
+  console.log("The colour is blue!");
 }
 else {
   console.log("The colour is neither red nor blue.")
@@ -149,7 +153,7 @@ const johnsAge = 17;
 johnsAge >= drinkingAge ? console.log('John can drink'); //conditon ? expression if true
 : console.log('John cannot drink');//expression if false
 
-let drink = johnsAge >= 18 ? 'beer' : 'water';// The result will be assigned to the drink variable
+const drink = johnsAge >= 18 ? 'beer' : 'water';// The result will be assigned to the drink variable
 
 //Ternary operators can be used as alternatives to if and else statements.
 function equilibrium (x) {
@@ -158,7 +162,7 @@ function equilibrium (x) {
 	: true;
 }
 
-//Switch Statements provide an altenrative syntax that is easier to read and write. A switch statement is useful when having to write many else if statements. If a break is ommited from a case the following case statements are executed until a break is encountered.
+//Switch Statements provide an alternative syntax that is easier to read and write. A switch statement is useful when having to write many else if statements. If a break is ommited from a case the following case statements are executed until a break is encountered.
 
 const groceryItem = 'tomato';
 switch (groceryItem) {
@@ -302,7 +306,7 @@ myButton.onclick = function() {
 
 //Arrow Functions: Theres another simple and concise way to create functions. Its called "arrow functions". If a arrow function has a single parameter the parentheses and the return keyword can be omitted.
 
-helloWorld = (name) => console.log(`${name} Hello World!`);
+helloWorld = name => console.log(`${name} Hello World!`)//if there is only one parameter we can omit the round brackets.
 
 helloWorld("John");
 //When there is no function body, and only a return value we can omit the return keyword as well as the brackets surrounding the code.
