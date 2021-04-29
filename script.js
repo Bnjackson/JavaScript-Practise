@@ -1,3 +1,16 @@
+//COMMENTS
+// Single line comments
+/*Multi
+line
+comments
+*/
+
+//"use strict" was introduced in ES5, the purpose of "use strict" is to indicate that code should be executed in "strict mode". Strict mode allows us to write secure JavaScript code and changes previously accepted "bad syntax" into real errors. "use strict" should be located at the top of the script but it can also be used in a local scope such as in a function.
+
+/***********************************
+VARIABLES, DATA TYPES AND OPERATORS
+***********************************/
+
 //Variables - Named storage for data - JavaScript is "dynamically typed" meaning that there exist data types but variables are not bound to any of them.
 
 var oldVariable = 0; //Var is rarely used since let and const were introduced in ES6. var is function scoped.
@@ -98,7 +111,12 @@ Assignment operators are used to assign values to variables
 /*String Operators
 + - Used to concatenate (add) strings.
 += - Also used to add strings together.
+
+
+Template literals -
+are string literals that allow embedded expressions. Template literals are enclosed by the backtick `` character instead of quotes. Template literals can contain placeholders indicated by ${placeholder}.
 */
+`string text ${expression} string text`
 
 //Truthy and Falsy - Each value has an inherent boolean value known as a truthy or falsy. They can be used to check if a variable exists for example to check if a user has a username.
 
@@ -114,6 +132,10 @@ if (username) {
 //Truthy Values:'0', 'false', [](an empty array), {}(an empty object), function(){}(an empty function) - Values considered true when evaluated in an if else statement.
 
 //Operator Precedence - Determines how operators are parsed concerning each other. Operators with higher precedence become the operands of operators with lower precedence.
+
+/*******************************
+LOGIC AND CONTROL STRUCTURES
+********************************/
 
 //conditional statements - Will perform different actions for different conditions.
 
@@ -181,6 +203,10 @@ switch (groceryItem) {
   default:
     console.log('Invalid Item');
 }
+
+/******************************
+FUNCTIONS, SCOPE AND CLOSURES
+******************************/
 
 /*
 A function is a reusable block of code that groups together a sequence of statements to perform a specific task. A function is executed when something evokes it. They can be used with different arguments, to produce different results.
@@ -311,11 +337,9 @@ helloWorld = name => console.log(`${name} Hello World!`)//if there is only one p
 helloWorld("John");
 //When there is no function body, and only a return value we can omit the return keyword as well as the brackets surrounding the code.
 
-
 let arrowFunction = (argument1, argument2) => {
   expression;
 };
-
 
 //its a shorter version of this
 
@@ -377,6 +401,11 @@ sayHello("Adam")();
 Other languages have public and private scope, in JS there is no such thing. We can emulate public and private scope through things like closures.
 */
 
+/******************************************
+ARRAYS
+*******************************************/
+
+
 /*Arrays - Are JavaScripts way of making lists. Arrays can store any data type. Array elements are numbered starting from 0. The difference between arrays and objects is that arrays are ordered. Arrays are created using []. Arrays are useful for storing a list of something: users, goods, HTML elements etc. Arrays provide ways to manage the order of elements unlike objects.
 
 Some programming langauages allow arrays with named indexs, these are called associative arrays (or hashes). JavaScript only has numbered arrays and does not support associative arrays.
@@ -411,11 +440,15 @@ console.log(nestedArr[1]); // Output: [2, 3] nestedArr[1] will grab the element 
 
 console.log(nestedArr[1][0]); // Output: 2 We can chain on more index values.
 
+/***********************************************
+OBJECTS, METHODS, THIS, PROTOTYPES AND FACTORY FUNCTIONS
+***********************************************/
 
 /*OBJECTS - Objects in Comparison to primitive data types are used to store collections of various data types and more complex entities such as arrays and functions.
-Objects are created using {} a propety is a 'key value' pair and the value can be anything. key: value.
+Objects are created using {} (curly bracket).
+Objects are unordered sequences of key-value pairs the keys are called "properties" they are arbitary strings and the values are any data type, each property can be used to look up(reference) the value associated with it.
 
-Objects can be used to organize code better instead of using multiple variables we can store things in a single object.
+Objects can be used to organize code better instead of using multiple variables we can store things in a single object. Objects are usually created to represent entities of the real world like users, items, orders and so on.
 */
 
 const ben = { // an object
@@ -434,6 +467,10 @@ ben.age = 29;//We can also mutate
 ben["Favourite Film"] = Big Lebowski; //We use [] to create multiword propety names.
 delete ben.job; //We can delete a property from an object with the delete operator.
 
+//Methods
+/*A method is a function which is a property of an object. We use this to access the information stored in the object. We can access object methods as we would any object property.
+There are many built in methods such as toUpperCase() is a method of the string object.
+*/
 
 //THIS
 
@@ -445,8 +482,9 @@ This has different values depending on where it is used
   In a function, in strict mode, this is undefined.
   In an event, this refers to the element that received the event.
   Methods like call(), and apply() can refer this to any object.
+
+Arrow functions should not be used when using this in a method as they inherently bind to an already defined this value such as the global object or another object that exists in the global scope.
 */
-//Methods - A function that is the property of an object is called a method
 
 const car = {
   carName: 'kia',
@@ -456,7 +494,7 @@ const car = {
   calcAge: function() {//Method
     this.age = 2020 - this.year;//The this keyword refers to the object the method belongs to.
   }
-}
+};
 
 car.calcAge();
 console.log(car);
@@ -481,6 +519,9 @@ mike.calcAge = matthew.calcAge;//We are copying the calcAge function from the ma
 mike.calcAge();
 console.log(mike);//The mike method now contains the calcAge function from the matthew method.
 
+/*Nested Objects - In application code, objects are often nested - an object might have another object as a property which in turn could have a property thats an array of even more objects.
+*/
+
 /*OBJECT PRIVACY - When discussing privacy in objects we define it as the idea that only certain properties should be mutable or able to change in value. Certain langauges have privacy inbuilt for objects but JavaScript does not have this feature. Rather JavaScript developers follow naming conventions that signal to other developers how to interact with a property.
 
 One common convention is to place an underscore _ before the name of a property to mean that property should not be altered.
@@ -489,7 +530,7 @@ We can use the Object.freeze(obj) to freeze an object preventing new properties 
 
 */
 /*GETTERS - Getters are methods that get and return the internal properties of an object. They can also do more than just retrieve an object.
-
+*/
 const person = {
   _firstName: 'John',
   _lastName: 'Doe',
@@ -503,7 +544,7 @@ const person = {
 }
 // To call the getter method:
 person.fullName; // 'John Doe'
-
+/*
 We use the get keyword followed by a function. We use a conditional to see if both exist.
 
 We can use getters to perform an action on the data when getting a property. Getters can return different values using conditionals. In a getter we can access the properties of the calling object using this.
@@ -639,9 +680,9 @@ for (key in users) { //key in object
   console.log(users[key]) //will print key properties
 }
 
-/*****
+/*****************************
 LOOPS & ITERATORS
-*****/
+******************************/
 
 //ITERATORS - JavaScript provides a number of ways of iterating over a collection, from for loops, while loops, to forEach(), map() etc.
 
@@ -690,8 +731,6 @@ for(const animal of animals) {//Animal refers to the individaul element.
   }
   console.log(animal);//Will print all array elements.
 }
-
-
 
 // While loop - While the condition is true the loop will execute. while loops are used when we dont know how many times the loop should run. While loops can create infinite loops that should be avoided as they can use too much processing power.
 
@@ -794,9 +833,10 @@ Other iterators include .some() and .every.
 
 .every() //Method tests whether all elements in the array pass the test implemented by the provided function. It returns a boolean value.
 
-/****
+/***************************************
 JAVASCRIPT INTERACTIVITY & THE DOM
-****/
+***************************************/
+
 /* The Document Object Model or DOM for short is a tree-like structure that allows programmers to conceptualize hierarchy and access elements on a web page. The DOM is created when the page is loaded.
 The DOM is a logical tree-like Model that organizes a web page’s HTML Document as an Object. The DOM is seperate from JavaScript and is more of a link between the HTML webpage and the scripting language.
 
@@ -970,7 +1010,6 @@ function eventHandlerFunction(event){////When the click event is triggered the f
 function runEvent(event) {
     e.preventDefault();
 }
-
 
 eventTarget.addEventListener("click", eventHandlerFunction);
 
