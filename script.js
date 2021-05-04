@@ -507,13 +507,13 @@ let matthew = {
     console.log(this);
     console.log(2020 - this.yearOfBirth)
   }
-}
+};
 matthew.calcAge();
 
 let mike = {
   name: 'mike',
   yearOfBirth: 1984
-}
+};
 
 mike.calcAge = matthew.calcAge;//We are copying the calcAge function from the matthew method to the mike method without having to copy the code.
 mike.calcAge();
@@ -531,6 +531,7 @@ We can use the Object.freeze(obj) to freeze an object preventing new properties 
 */
 /*GETTERS - Getters are methods that get and return the internal properties of an object. They can also do more than just retrieve an object.
 */
+
 const person = {
   _firstName: 'John',
   _lastName: 'Doe',
@@ -541,8 +542,8 @@ const person = {
       return 'Missing a first name or a last name.';
     }
   }
-}
-// To call the getter method:
+};
+// To call the getter method in general getter methods do not need to be called with a set of parentheses.
 person.fullName; // 'John Doe'
 /*
 We use the get keyword followed by a function. We use a conditional to see if both exist.
@@ -551,6 +552,7 @@ We can use getters to perform an action on the data when getting a property. Get
 Getter and setter methods cannot share the same name as the properties. It will cause a infinte call stack error.
 
 SETTERS - are methods which reassign values of existing properties within an object.
+*/
 
 const person = {
   _age: 37,
@@ -562,26 +564,30 @@ const person = {
     }
   }
 };
-person.age = 40;
+person.age = 40;//Like getters we do not call with a set of parentheses, it looks syntactically like they are being reassigned.
 console.log(person._age); // Logs: 40
-
+/*
 Like getter methods there are similar advantages that include checking input, performing actions on properties and displaying a clear intention for how the object is supposed to be used.
 
 OBJECT CONSTRUCTORS - If we were creating a online shopping site with a large inventory manually typing out all those objects is not feasible. A better way to create them is using an object constructor which is a function that looks like this:
 
+*/
 function Player(name, score) {
   this.playerName = name;
   this.playerScore = score;
 }
-
+/*
 The object constructors name should begin with a capital.
 you call using the keyword new
+*/
 
 const player = new Player("steve", 24);
 
+/*
 Constructor for book object we can also add methods to constructor functions.
 You can not add a new property to an existing object constructor like you would a object using dot or bracket notation. To add a new property you must add it to the constructor function.
 */
+
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
@@ -596,8 +602,9 @@ const janeEyre = new Book("Jane Eyre", "Charlotte Bronte", 300, "I have read");
 
 /*The prototype -
 Prototypes are unique to JavaScript, JS works with objects in a very specific way.
+All objects in JavaScript have a prototype. The prototype is another object that the original object inherits from, which allows the original object to access all the prototypes methods and properties.
 
-Prototypes are shared  objects that have properties and methods that can be accessed via a range of different objects.
+If we log a object or an array to the console they will all contain the __proto__ property, which inside of we can see all the methods attached to that particular object.
 
 Prototypes allow us to save space and use less code, instead of having the same methods or properties in each instance we can add the methods or properties directly to the constructor prototype. So the methods and properties are stored in one place but can be accessible by all tthe objects created by the constructor.
 
@@ -607,7 +614,7 @@ All JavaScript objects inherit properties and methods from a prototype.
     Objects inherit prototypes from Object.prototype
 
 The Object.prototype is on the top of the prototype inheritance chain:
-Date objects and Array objects inherit from Object.protot ype.
+Date objects and Array objects inherit from Object.prototype.
 
 We can modify the prototype property of a constructor function methods added to the object are then availible on all object instances created from the constructor.
 */
@@ -642,6 +649,7 @@ carl.grade // 8
 
 /*
 FACTORY FUNCTIONS - allow us to create many instances of an object quickly. A factory function is a function that returns an object and can be reused to make multiple object instances. Factory functions have parameters to customise the object that gets returned.
+*/
 
 const factoryFunction = (name, age) => {
 	const person = {
@@ -653,7 +661,10 @@ const factoryFunction = (name, age) => {
 
 const ben = factoryFunction("Ben", 24)
 
+
+/*
 ES6 introduced shortcuts for assigning properties to variables known as destructuring. Instead of assigning ecah property with a key and value even though they share the same name. One shortcut we can use is the destructuring technique called propety value shorthand.
+*/
 
 const factoryFunction = (name, age) => {
 	return {
@@ -662,10 +673,13 @@ const factoryFunction = (name, age) => {
     }
 }
 
+/*
 Another destructuring technique is called destructured assignment. In destructured assignment we create a variable with the name of an objects key that is wrapped in {} and assign it to the object.
+*/
 
-const {age} = ben; //Would return 24.
+const { age } = ben; //Would return 24.
 
+/*
 We can even use destructured assignment to grab nested properties of an object.
 
 BUILT IN OBJECT METHODS
@@ -675,6 +689,7 @@ There are many inbuilt methods for objects. For example .hasOwnProperty(), value
 THE FOR IN LOOP
 The for in loop is a special form of loop used to loop over all keys of an object.
 */
+
 for (key in users) { //key in object
   console.log(key); //will print keys
   console.log(users[key]) //will print key properties
