@@ -361,13 +361,24 @@ Block Scope - When a variable is defined inside a block. That variable has block
 
 Scope Pollution - Having too many global variables can cause problems in a program. Scope pollution is when we have too many global variables that exist in the global namespace. Scope pollution makes it difficult to keep track of our different variables and sets up potential accidents.
 
-Closures: A closure is the combination of a function and the lexical enviroment which that function was declared. In other words a closure gives you access to an outer functions scope from an inner function.
-Closures are created every time a function is created, at function creation time.
-To use a closure define a function inside another function and expose it. To expose a function return it or pass it to another function.
-The inner function will have access to the variables in the outer function even after the outer function has returned.
+Closures: The concept of closure is the idea that functions retain their scope even if they are passed around and called outside of that scope. A inner function has access to everything inside the outer function even if it is called outside of that function.
 
-Closures are commonly used to give objects data privacy.
+In the context of factory functions closures allow us to create private variables and functions. Private functions are functions that are used in the workings of our objects that are not intended to be used elsewhere in our program. In other words, even though our objects might only do one or two things, we are free to split our functions up as much as we want(allowing for cleaner and easier to read code) and only export the functions the rest of the program is going to use.
+
+The concept of private functions is very useful and should be used as often as possible. For every bit of functionality that you need for your program, there are likely to be several supporting functions that do not need to be used in your program as a whole. Tucking these away and making them inaccessible makes your code easier to refactor, easier to test and easier to read.
 */
+
+function FactoryFunction(string) {
+    const capitalizeString = () => string.toUpperCase();
+    const printSpring = () => console.log(`----${capitalizeString()}----`);
+    return { printSpring };
+}
+
+const taco = FactoryFunction("Taco");
+taco.capitalizeString();//Is a private function that is accessible to printSpring but will cause an error if we try to call it.
+taco.printSpring();//The printString function can be accessed as it is a method on the taco object. pringString being able to access capitalizeString while we cannot is closure.
+
+
 
 const sayHello = function (name) {
   const text = "Hello, " + name;
@@ -604,9 +615,9 @@ const janeEyre = new Book("Jane Eyre", "Charlotte Bronte", 300, "I have read");
 Prototypes are unique to JavaScript, JS works with objects in a very specific way.
 All objects in JavaScript have a prototype. The prototype is another object that the original object inherits from, which allows the original object to access all the prototypes methods and properties.
 
-If we log a object or an array to the console they will all contain the __proto__ property, which inside of we can see all the methods attached to that particular object.
+If we log an object or object type(arrays) to the console they will all contain the __proto__ property, which inside of we can see all the methods attached to that particular object.
 
-Prototypes allow us to save space and use less code, instead of having the same methods or properties in each instance we can add the methods or properties directly to the constructor prototype. So the methods and properties are stored in one place but can be accessible by all tthe objects created by the constructor.
+Prototypes allow us to save space and use less code, instead of having the same methods or properties in each instance we can add the methods or properties directly to the constructor prototype. So the methods and properties are stored in one place but can be accessible by all the objects created by the constructor. Methods inherited via prototype can also be changed universally for all instances.
 
 All JavaScript objects inherit properties and methods from a prototype.
     Date objects inherit prototypes from Date.prototype
@@ -616,14 +627,22 @@ All JavaScript objects inherit properties and methods from a prototype.
 The Object.prototype is on the top of the prototype inheritance chain:
 Date objects and Array objects inherit from Object.prototype.
 
-We can modify the prototype property of a constructor function methods added to the object are then availible on all object instances created from the constructor.
+We can modify the prototype property of a constructor function so methods added to the constructor are then availible on all object instances created from the constructor.
 */
-Book.prototype.authorNationality = () => {
-    console.log("English");
-}
-janeEyre.authorNationality();
 
-console.log(janeEyre.info());
+function User(email, username) {
+    this.email = email;
+    this.username = username;
+}
+
+User.prototype.printEmailUsername = function() {
+    return `${this.email} ${this.username}`;
+};
+//We are adding the method directly to the User constructor the new objects will inherit the constructors prototype. This saves
+
+const mark = new User("mark@gmail.com", "mark97");
+
+console.log(mark.printEmailUsername());
 
 /*Recommended Method for Prototypal Inheritance
 The recommended way of setting the prototype of an object is Object.create, which very simply returns a new object with the specified prototype and any additional properties you want to add. For our purposes you use it like so:
@@ -648,10 +667,17 @@ carl.sayName() // console.logs "carl"
 carl.grade // 8
 
 /*
+Factory Functions vs Constructors
+There are many people who argue against using constructors. One issue with using constructors is that if you aren't careful they can introduce bugs into your code when using constructors. Another issue with constructors is that while they look like regular functions they do not behave like regular functions. If you try to use a constructor function without the new keyword, the program will not run as expected but it wont produce error messages that are easy to trace.
+
+A lot of programmers recommend using factory functions instead of constructors. As factory functions are much more flexible than constructors. With factory functions there is also no ambuiguity when it comes to new and this behaves as it would normally.
+*/
+
+/*
 FACTORY FUNCTIONS - allow us to create many instances of an object quickly. A factory function is a function that returns an object and can be reused to make multiple object instances. Factory functions have parameters to customise the object that gets returned.
 */
 
-const factoryFunction = (name, age) => {
+const FactoryFunction = (name, age) => {
 	const person = {
 		name: name,
     age: age
@@ -659,14 +685,14 @@ const factoryFunction = (name, age) => {
   return this.ojectName.push(person);
 }
 
-const ben = factoryFunction("Ben", 24)
+const ben = FactoryFunction("Ben", 24)
 
 
 /*
 ES6 introduced shortcuts for assigning properties to variables known as destructuring. Instead of assigning ecah property with a key and value even though they share the same name. One shortcut we can use is the destructuring technique called propety value shorthand.
 */
 
-const factoryFunction = (name, age) => {
+const FactoryFunction = (name, age) => {
 	return {
 		name,
     age
@@ -678,10 +704,30 @@ Another destructuring technique is called destructured assignment. In destructur
 */
 
 const { age } = ben; //Would return 24.
+//We can even use destructured assignment to grab nested properties of an object.
+
+/*Inheritance with factories -
+ There are a few ways to accomplish inheritance while using factory functions. One pattern is to have factory functions for specific methods you want to include in your objects. Aswell as a main factory function that can use destructured assignment syntax to pull out methods and properties from another factory function and pass it to a new object. This pattern is useful as it allows us to pick and choose which functions we want to include in our new object.
+*/
+
+const Person = (name) => {
+  const sayName = () => console.log(`my name is ${name}`)
+  return {sayName}
+}
+
+const Nerd = (name) => {
+  // simply create a person and pull out the sayName function with destructuring assignment syntax!
+  const {sayName} = Person(name)
+  const doSomethingNerdy = () => console.log('nerd stuff')
+  return {sayName, doSomethingNerdy}
+}
+
+const jeff = Nerd('jeff')
+
+jeff.sayName() //my name is jeff
+jeff.doSomethingNerdy() // nerd stuff
 
 /*
-We can even use destructured assignment to grab nested properties of an object.
-
 BUILT IN OBJECT METHODS
 
 There are many inbuilt methods for objects. For example .hasOwnProperty(), valueOf(), Object.keys(), Object.entries(), Object.assign().
