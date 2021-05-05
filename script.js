@@ -297,30 +297,32 @@ check - check something and retun a boolean, etc
 
 //Functions should be short and do one thing sometimes it is good to split the function into smaller functions. Seperate functions are easier to test and debug.
 
-//Function expressions - Is another syntax for creating functions.
-
-const sayHi = function() {
-  alert( "Hello" );
+function sayHello() {
+  alert("Hello");
 };
 
 //Here the function is created and assigned to the variable explicitly, like any other value. No matter how the function is defined, its just a value stored in the variable sayHi.
 
-//Expressions vs Statements vs Declarations - An expression is a piece of code that always produces a value and can be written wherever a value is expected.
-// A statement is a standalone unit of execution it does not return anything.
-// A declaration is a statement in which a value is assigned to a variable. All declarations are statements but not all statements are declarations.
+/*When to use a Function Declaration vs a Function Expression -
+Function declarations and function expressions are both ways to declare functions and are callable from other code, however they behave in different ways.
+Function declarations are hoisted meaning no matter where they are declared they are hoisted to the top of their scope. Function expressions are not hoisted so they are only accessible after their intialization.
+Function declarations can also be used as constructors and have a prototype property. Expressions cannot be used as constructors and do not have a prototype property.
+Expressions unlike declarations do not have its own this or arguments and instead inherits them from the next non-parent function scope.
+Function expressions when using arrow functions can be simple and precise.
+Function expressions also resolve into a value whereas declarations simply define the function in the current scope.
+*/
 
-//Function expression vs function declaration
+//Function declaration: a function declared as a seperate statement in the main code flow. Declarations have global scope declarations are visible throughtout the code. They can be called before they are declared. Declarations are usually used more than expressions as they more readable and provide more freedom.
 
 function functionDeclaration(a, b) {
   return a + b;
 }
 
-//Function declaration: a function declared as a seperate statement in the main code flow. Declarations have global scope declarations are visible throughtout the code. They can be called before they are declared. Declarations are usually used more than expressions as they more readable and provide more freedom.
+//Function expression: a function created inside an expression or another syntax construct. Expressions can be useful for callback functions and have the benefits of being contained in a variable.
 
 const functionExpression = function(a, b) {
   return a + b;
 };
-//Function expression: a function created inside an expression or another syntax construct. Expressions can be useful for callback functions and have the benefits of being contained in a variable.
 
 /*Anonymous Functions - An Anonymous function is a function without a name it wont do anything on its own. You generally use an Anonymous function with an event handler, so the function runs in response to an event such as a button being clicked.
 */
@@ -332,7 +334,7 @@ myButton.onclick = function() {
 
 //Arrow Functions: Theres another simple and concise way to create functions. Its called "arrow functions". If a arrow function has a single parameter the parentheses and the return keyword can be omitted.
 
-helloWorld = name => console.log(`${name} Hello World!`)//if there is only one parameter we can omit the round brackets.
+const helloWorld = name => console.log(`${name} Hello World!`)//if there is only one parameter we can omit the round brackets.
 
 helloWorld("John");
 //When there is no function body, and only a return value we can omit the return keyword as well as the brackets surrounding the code.
@@ -683,9 +685,9 @@ const FactoryFunction = (name, age) => {
     age: age
     }
   return this.ojectName.push(person);
-}
+};
 
-const ben = FactoryFunction("Ben", 24)
+const ben = FactoryFunction("Ben", 24);
 
 
 /*
@@ -697,7 +699,7 @@ const FactoryFunction = (name, age) => {
 		name,
     age
     }
-}
+};
 
 /*
 Another destructuring technique is called destructured assignment. In destructured assignment we create a variable with the name of an objects key that is wrapped in {} and assign it to the object.
@@ -707,25 +709,53 @@ const { age } = ben; //Would return 24.
 //We can even use destructured assignment to grab nested properties of an object.
 
 /*Inheritance with factories -
- There are a few ways to accomplish inheritance while using factory functions. One pattern is to have factory functions for specific methods you want to include in your objects. Aswell as a main factory function that can use destructured assignment syntax to pull out methods and properties from another factory function and pass it to a new object. This pattern is useful as it allows us to pick and choose which functions we want to include in our new object.
+ There are a few ways to accomplish inheritance while using factory functions. One pattern is to have factory functions for specific methods you want to include in your objects. Aswell as a main factory function that can use destructured assignment syntax to grab methods and properties from another factory function and pass it to a new object. This pattern is useful as it allows us to pick and choose which functions we want to include in our new object.
 */
 
 const Person = (name) => {
-  const sayName = () => console.log(`my name is ${name}`)
-  return {sayName}
-}
+  const sayName = () => console.log(`my name is ${name}`);
+  return {sayName};
+};
 
 const Nerd = (name) => {
   // simply create a person and pull out the sayName function with destructuring assignment syntax!
-  const {sayName} = Person(name)
-  const doSomethingNerdy = () => console.log('nerd stuff')
-  return {sayName, doSomethingNerdy}
-}
+  const {sayName} = Person(name);
+  const doSomethingNerdy = () => console.log('nerd stuff');
+  return {sayName, doSomethingNerdy};
+};
 
-const jeff = Nerd('jeff')
+const jeff = Nerd('jeff');
 
-jeff.sayName() //my name is jeff
-jeff.doSomethingNerdy() // nerd stuff
+jeff.sayName(); //my name is jeff
+jeff.doSomethingNerdy(); // nerd stuff
+
+/*The Module Pattern -
+Modules are very similar to factory functions. The main difference is how they are created.
+*/
+
+const calculator = (() => {
+  const add = (a, b) => a + b;
+  const sub = (a, b) => a - b;
+  const mul = (a, b) => a * b;
+  const div = (a, b) => a / b;
+  return {
+    add,
+    sub,
+    mul,
+    div,
+  };
+})();
+
+calculator.add(3,5) // 8
+calculator.sub(6,2) // 4
+calculator.mul(14,5534) // 77476
+
+/*The concepts are exactly the same however instead of creating a factory that we can use over and over again to create multiple objects, the module pattern wraps the factory in an IIFE(Immediately Invoked Function Expression).
+
+In our calculator example above, the function inside the IIFE is a simple factory function, but we can just go ahead and assign the object to the variable calculator since we aren’t going to need to be making lots of calculators, we only need one. Just like the factory example, we can have as many private functions and variables as we want, and they stay neatly organized, tucked away inside of our module, only exposing the functions we actually want to use in our program.
+
+A useful side-effect of encapsulating the inner workings of our programs into objects is namespacing. Namespacing is a technique that is used to avoid naming collisions in our programs. For example, it’s easy to imagine scenarios where you could write multiple functions with the same name. In our calculator example, what if we had a function that added things to our HTML display, and a function that added numbers and operators to our stack as the users input them? It is conceivable that we would want to call all three of these functions add which, of course, would cause trouble in our program. If all of them were nicely encapsulated inside of an object, then we would have no trouble: calculator.add(), displayController.add(), operatorStack.add().
+*/
 
 /*
 BUILT IN OBJECT METHODS
