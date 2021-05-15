@@ -212,6 +212,12 @@ FUNCTIONS, SCOPE AND CLOSURES
 A function is a reusable block of code that groups together a sequence of statements to perform a specific task. A function is executed when something evokes it. They can be used with different arguments, to produce different results.
 Functions can access external data but the opposite isnt true. Other code can not look inside a function.
 A function should do exactly what is suggested by its name and no more. Two independent actions requires two functions.
+
+In JavaScript functions are first class objects - meaning that they are "things"(values) that can be organized and manipulated just like variables.
+
+Functions are variables for a value of type function.
+
+Functions are special because we can invoke them, but we can still treat them like any other type of data.
 */
 
 function showMessage() { //Function keyword, function name and parameters between the ().
@@ -351,7 +357,24 @@ let func = function(arg1, arg2, ...argN) {
 
 //Higher-Order Functions - A Higher-Order function is a function that either accepts functions as parameters, returns a function or both. We call the function that get passed in as parameters and invoked callback functions because they get called during the execution of the higher-order function.
 
-//Callback Function = a callback function is a function that is passed as a parameter to another JavaScript function, and the callback function is run inside of the function it was passed into.
+//Callback Function = Functions are values so they can be passed as parameters to other functions. A function that is passed into another is commonly reffered to as a callback function: it is an argument that another function will "call back to" and execute when needed. Functions can take more than one callback function as arguments which can be a useful way of composing behaviours. Passing functions as arguments to other functions is at the heart of functional programming. We can define program behavior primarily in terms of behaviors that are run, and less in terms of the data variables used. Callback functions are vital for interactivity: such as when using event listeners.
+
+function doTogether(firstCallback, secondCallback){
+    firstCallback();  //execute the first function
+    secondCallback();  //execute the second function
+    console.log('at the same time!');
+}
+
+function patHead() {
+    console.log('pat your head');
+}
+
+function rubBelly() {
+    console.log('rub your belly');
+}
+
+//pass in the callbacks to do them together
+doTogether(patHead, rubBelly);
 
 /* Blocks - A block is the code found inside a set of {}. Blocks help us group one or more statements together
 
@@ -865,6 +888,10 @@ const array = ['a', 'b', 'c'];
 array.forEach(printArray);
 function printArray(element) { //The element parameter refers to the array.
 console.log(element)} //Prints ['a', 'b', 'c'];
+
+//Another way to pass a callback function for .forEach() is to use arrow function syntax.
+
+array.forEach(number => console.log(number));//Number refers to the individual array elements.
 
 .map() //method = Creates a new array with the results of calling a provided function once for every array element.
 
