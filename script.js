@@ -881,6 +881,9 @@ for (let i = 0; i < nick.length; i++) {
   console.log(nick[i]); //'nick', 'smith', 'designer'
 
 //ITERATOR ARRAY METHODS
+/* The array data type consists of a list of elements. There are many built-in methods available to work with arrays. Methods that modify the original array are known as mutator methods, and methods that return a new value or representation are reffered to as accessor methods. Methods that operate on every item in an array, one at a time are known as itteration methods.
+*/
+
 
 .forEach()// method - is used to call a provided function once for each element in an array in order.
 
@@ -911,6 +914,13 @@ function lessThan (num) {
 }
 console.log(smallNumbers) //Print 200, 3.14, 7, 13
 
+.find() //The find() method returns the first value in an array that passes a given test.
+
+const array1 = [5, 12, 8, 130, 44];
+const found = array1.find(element => element > 10);
+console.log(found);
+// expected output: 12
+
 .findIndex() //this method helps us find the location of an element in an array. Calling .findIndex() on an array will return the index of the first element that evaluates to true in the callback function. If there isnt a single element that satisfies the condition in the callback then findIndex() will return -1.
 
 const animals = ["hippo", "giraffe", "tiger", "lion", "seal", "monkey", "elephant"]
@@ -921,6 +931,8 @@ function indexOfAnimals(animal) {
   return animal === "elephant";
 }
 console.log(elephantPostion); //Prints 6 position of elephant in array.
+
+.includes() //This method determines whether an array includes a certain value among its elements returning true and false as appropriate
 
 .sort() //this method sorts arrays alphabetically.
 .reverse() //this method reverses the elements in an array you can use it to sort an array in descending order.
@@ -943,17 +955,43 @@ console.log(sortNumeric(numbers));
 .reduce()  //is a method that returns a single value after iterating through the elements of an aray, thereby reducing the array. The callback function takes two values the accumulator and the current value. The value of the accumulator starts off as the value of as the value of the first element in the array and the current value starts as the second value. As reduce() iterates through the array the accumulator value becomes the return value of the callback function for the next iteration.
 
 const euros = [29.76, 41.85, 46.5];
-const sum = euros.reduce((total, amount) => total + amount);
-sum // 118.11
+const sum = euros.reduce((total, amount) => {
+  return total + amount;
+});
+console.log(sum) // 118.11
 
-Other iterators include .some() and .every.
+//The .reduce method can also take a optional second parameter to set an intial value for the accumulator.
+
+const numbers = [1, 2, 4, 10];
+
+const summedNums = numbers.reduce((accumulator, currentValue) => {//Accumulator first value is 100 and currentValue first value will be 1.
+  return accumulator + currentValue
+}, 100)  // <- Second argument for .reduce()
+
+console.log(summedNums); // Output: 117
+
+//Other iterators include .some() and .every.
 .some()  //tests whether at least one element in an array passes the test implemented by the problem. It returns a boolean value.
 
+const words = ['unique', 'uncanny', 'pique', 'oxymoron', 'guise'];
+
+console.log(words.some((word) => {//Will return boolean if at least one element is less than 6 characters in length.
+  return word.length < 6;
+}));
+
 .every() //Method tests whether all elements in the array pass the test implemented by the provided function. It returns a boolean value.
+
+console.log(interestingWords.every((word) => {//Will return boolean if all elements are greater than 5 characters in length.
+  return word.length > 5;
+ } ));
+
+
 
 /***************************************
 JAVASCRIPT INTERACTIVITY & THE DOM
 ***************************************/
+
+
 
 /* The Document Object Model or DOM for short is a tree-like structure that allows programmers to conceptualize hierarchy and access elements on a web page. The DOM is created when the page is loaded.
 The DOM is a logical tree-like Model that organizes a web page’s HTML Document as an Object. The DOM is seperate from JavaScript and is more of a link between the HTML webpage and the scripting language.
