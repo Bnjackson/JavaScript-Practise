@@ -35,18 +35,88 @@ console.log(firstName + ' is a ' + age + ' year old ' + job + '. Is he married ?
 age = 'twenty eight';//The age variable is mutated from a number to a string.
 
 /*Primitive Data types - their values can only contain a single thing.
-Number - Floating point, numbers for decimals and integers
-String - Sequence of characters, used for text. By using backticks(``) and ${} we can create a "extended functionality" quotes they allow us to embed variables and expressions into a string by wrapping them in `${}`
-Boolean - Logical data type that can be true or false rsult of comparisons.
-undefined - Data type of a variable that does not have a value yet.
-Null - Also means 'non-existent' empty or value unknown.
-BigInt - Represents numbers larger than the JavaScript limit.
 
+Methods of primitives -
+JavaScript allows us to work with primitive data types as if they were objects. This allows us to access a number of useful methods. These methods work via tempoary objects that are destroyed after the method runs.
+*/
+
+Number - /*
+Represents both integer and floating point numbers. There are also special numeric values including Infinity, -Infinity and NaN.
+
+Math object:
+Math is a built-in object that has a library of properties and methods for mathematical use. Unlike other global objects, Math is not a constructor. All properties and methods of Math are static.
+A few useful methods include.*/
+
+
+//Math.random() - Returns a random number between o and 1(not including 1).
+const randomNumber = Math.random();
+
+//Math.floor - Returns a rounded down integer
+Math.floor(3.6);//returns 3
+
+//Math.ceil - Returns a rounded up integer
+Math.ceil(3.6);//returns 4
+
+//Math.round - Returns a integer rounded to the nearest integer 0.5 rounds up to 1
+Math.round(3.3);//returns 3
+
+//Math.trunc - Removes anything after the decimal point without rounding
+Math.trunc(3.6)//returns 3
+
+/*Number conversion
+We can use a + or Number() to convert to a number. However if it is not exactly a number it fails.
+*/
+console.log(+"100px");//Will return NaN
+
+//We often have to deal with values in units like "100px", "100£" etc. We can use parseInt and parseFloat to "read" a number from a string until they can't. Both are methods of the Number object.
+
+parseInt("100px")//parseInt returns a integer - 100
+parseFloat("12.5rem")//parseInt returns a floating point number - 12.5
+
+String -/*
+ Sequence of characters, used for text. String can be enclosed in ''(single), ""(double ) and ``(backtick) quotes.
+
+ By using backticks(``) and ${} we can create a "extended functionality" quotes they allow us to embed variables and expressions into a string by wrapping them in `${}`
+
+Accessing characters
+We can access the characters of a string using square brackets([0]).
+
+We can not change a character like we would a array using bracket notation
+*/
+let str = "hi";
+str[0] = "H";//error
+
+//The workaround is to create a whole new string and assign it.
+str = "H" + str[i];//str = "Hi"
+
+/*
+String Methods and properties -
+Some useful methods and properties for strings include....
+*/
+//.length - property returns the length of a string.
+str.length// 2
+
+//.indexOf() - method returns the index of the first occurence of a specifc substring, or -1 if string is not found
+str.subSting("hi")//0
+
+
+
+Boolean /* Logical data type that can be true or false rsult of comparisons.
+
+
+*/
+undefined -// Means a variable that has been declared but has not yet been assigned a value.
+Null - //Is an assignment value. It can be assigned to a varaible as a representation of no value.
+BigInt - //Represents numbers larger than the JavaScript limit.
+
+/*
 We can use the typeof operator to return the data type.
 
-Structural types -
+Structural types - Objects unlike primitive data types can store collections of data along and more complex entities.
 Object - Data structure containing data and instructions for working with data.
-Function - Functions are a subclass of object.
+  Array - Arrays are a ordered subclass of object.
+  Function - Functions are a subclass of object.
+Symbol - The symbol type is used to create unique identifiers for objects.
 */
 console.log(typeof job) //string
 
@@ -884,7 +954,6 @@ for (let i = 0; i < nick.length; i++) {
 /* The array data type consists of a list of elements. There are many built-in methods available to work with arrays. Methods that modify the original array are known as mutator methods, and methods that return a new value or representation are reffered to as accessor methods. Methods that operate on every item in an array, one at a time are known as itteration methods.
 */
 
-
 .forEach()// method - is used to call a provided function once for each element in an array in order.
 
 const array = ['a', 'b', 'c'];
@@ -939,11 +1008,12 @@ console.log(elephantPostion); //Prints 6 position of elephant in array.
 
 Numeric Sort  //By default the sort() method sorts strings. However when we try to sort numbers like strings 25 is sorted higher than 100 because 2 is greater than 1. Because of this sort() method will produce incorrect results when sorting.  We can use a compare function to fix this.
 
-let numbers = [100, 45, 62 , 76, 909, 23, 97, 53, 32, 16, 36, 111];
-
+let numbers = [100, 45, 62, 76, 909, 23, 97, 53, 32, 16, 36, 111];
+// 100 - 45 = 55 because it is a positive number JS knows that 100 is greater than 45 so js will swap their places and then compare 100 to the next number.
+//1 - 100 = -99 becuase it is a negative number JS knows that 1 is less than 100.
 function sortNumeric(arr) {
-    const sorted = arr.sort(function (a, b){
-        return a - b;
+    const sorted = arr.sort(function (a, b){//pass in the two numbers
+        return a - b;// a - b for ascending order, b - a for descending order.
     });
     return sorted;
 }
@@ -970,7 +1040,7 @@ const summedNums = numbers.reduce((accumulator, currentValue) => {//Accumulator 
 
 console.log(summedNums); // Output: 117
 
-//Other iterators include .some() and .every.
+
 .some()  //tests whether at least one element in an array passes the test implemented by the problem. It returns a boolean value.
 
 const words = ['unique', 'uncanny', 'pique', 'oxymoron', 'guise'];
