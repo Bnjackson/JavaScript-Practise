@@ -81,7 +81,7 @@ String -/*
 Accessing characters
 We can access the characters of a string using square brackets([0]).
 
-We can not change a character like we would a array using bracket notation
+We can not change a character like we would a array using bracket notation. As string are immutable
 */
 let str = "hi";
 str[0] = "H";//error
@@ -99,13 +99,34 @@ str.length// 2
 //.indexOf() - method returns the index of the first occurence of a specifc substring, or -1 if string is not found
 str.subSting("hi")//0
 
+//.toUpperCase() returns a capitalized string
+str.toUpperCase();//HI
+
+//.toLowerCase() - returns a lower case string
+str.toLowerCase()//hi
+
+//.split() - divides a string into an ordered list of substrings and returns as a array
+const message = "Hello World";
+const array = message.string(" ");//[Hello, World];
+//The parameter is used to search for a pattern e.g. ("") characters, (" ") words, () whole string.
 
 
-Boolean /* Logical data type that can be true or false rsult of comparisons.
-
-
+/*
+Comparing strings -
+Strings are compared character by character in alphabetical order. If the first character of one string is greater or less than the other strings. Then the first string is greater or less than the second.
+If both characters are the same repeat with the rest of the characters, if all are equal then the two strings are equal.
 */
-undefined -// Means a variable that has been declared but has not yet been assigned a value.
+
+console.log("Z" > "A")//True
+
+console.log("a" > "Z")//true - One oddity is that a lowercase letter is always greater than the uppercase.
+
+
+Boolean // Logical data type that can be true or false. Boolean values can come as a result of comparisons.
+
+
+
+Undefined -// Means a variable that has been declared but has not yet been assigned a value.
 Null - //Is an assignment value. It can be assigned to a varaible as a representation of no value.
 BigInt - //Represents numbers larger than the JavaScript limit.
 
@@ -178,6 +199,9 @@ Assignment operators are used to assign values to variables
 %= - Assigns a remainder varable
 */
 
+//Operator Precedence - Determines how operators are parsed concerning each other. Operators with higher precedence become the operands of operators with lower precedence.
+
+
 /*String Operators
 + - Used to concatenate (add) strings.
 += - Also used to add strings together.
@@ -197,12 +221,15 @@ if (username) {
   defaultName = 'Stranger';
 }
 
-//Falsy Values: undefined, null, false, 0, '' or "" (empty string), NaN. - Values considered false when evaluated in an if else statement.
+/*Falsy Values: undefined, null, false, 0, '' or "" (empty string), NaN. - Values considered false when evaluated in an if else statement.
 
-//Truthy Values:'0', 'false', [](an empty array), {}(an empty object), function(){}(an empty function) - Values considered true when evaluated in an if else statement.
+/Truthy Values:'0', 'false', [](an empty array), {}(an empty object), function(){}(an empty function) - Values considered true when evaluated in an if else statement.
 
-//Operator Precedence - Determines how operators are parsed concerning each other. Operators with higher precedence become the operands of operators with lower precedence.
+We can check if a value is truthy or falsey using a conditional.*/
 
+if(value)//will run if value is truthy.
+if(!value)//Will run if value is falsey.
+value ? /*will run if truthy*/ : /*will run if falsey*/
 /*******************************
 LOGIC AND CONTROL STRUCTURES
 ********************************/
@@ -858,10 +885,11 @@ There are many inbuilt methods for objects. For example .hasOwnProperty(), value
 THE FOR IN LOOP
 The for in loop is a special form of loop used to loop over all keys of an object.
 */
+const object = { a: 1, b: 2, c: 3 };
 
-for (key in users) { //key in object
-  console.log(key); //will print keys
-  console.log(users[key]) //will print key properties
+for (const property in object) { //key in object
+  console.log(property); //will print keys
+  console.log(object[property]) //will print key properties
 }
 
 /*****************************
