@@ -81,7 +81,7 @@ String -/*
 Accessing characters
 We can access the characters of a string using square brackets([0]).
 
-We can not change a character like we would a array using bracket notation. As string are immutable
+We can not change a character like we would a array using bracket notation. As strings are immutable
 */
 let str = "hi";
 str[0] = "H";//error
@@ -814,7 +814,7 @@ const ben = FactoryFunction("Ben", 24);
 ES6 introduced shortcuts for assigning properties to variables known as destructuring. Instead of assigning ecah property with a key and value even though they share the same name. One shortcut we can use is the destructuring technique called propety value shorthand.
 */
 
-const FactoryFunction = (name, age) => {
+function FactoryFunction(name, age) {
 	return {
 		name,
     age
