@@ -395,7 +395,11 @@ show - shows something
 get - return a value
 calc - calculate something
 create - create something
-check - check something and retun a boolean, etc
+check - check something and retun a boolean
+push
+apply
+compute
+post
 */
 
 //Functions should be short and do one thing sometimes it is good to split the function into smaller functions. Seperate functions are easier to test and debug.
