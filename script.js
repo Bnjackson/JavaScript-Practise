@@ -389,7 +389,7 @@ function getFahrenheit(celsius) {
 
 getFahrenheit(15); // Returns 59
 
-/*Naming a function - Functions are actions so their name is usually a verb. It should be brief as accurate possible and describe what the function does, so that someone who reads the code gets an indication of what the function.
+/*Naming a function - Functions are actions so their name is usually prefixed by a verb. It should be brief but descriptive, accurate and describe what the function does, so that someone who reads the code gets an indication of what the function.
 For instance....
 show - shows something
 get - return a value
