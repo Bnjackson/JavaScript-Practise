@@ -882,6 +882,15 @@ A useful side-effect of encapsulating the inner workings of our programs into ob
 */
 
 /*
+CLASSES
+
+JavaScript does not have classes in the same sense as other Object Oriented Langauges like Java or Ruby. ES6 however did, introduce a syntax for object creation that uses class keyword. It is basically a new syntax that does the exact same thing as the object constructors and protoypes.
+
+There is a bit of controversy about the using the class syntax. Opponents argue that class is basically syntactic sugar over the existing prototype-based constructors and that it's dangerous and/or misleading to obscure whats really going on with these objects. Despite the controversy, classes are beginning to crop up in real code bases that you are almost certainly going to encounter such as frameworks like react.  
+
+*/
+
+/*
 BUILT IN OBJECT METHODS
 
 There are many inbuilt methods for objects. For example .hasOwnProperty(), valueOf(), Object.keys(), Object.entries(), Object.assign().
