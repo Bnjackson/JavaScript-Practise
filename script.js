@@ -884,9 +884,23 @@ A useful side-effect of encapsulating the inner workings of our programs into ob
 /*
 CLASSES
 
-JavaScript does not have classes in the same sense as other Object Oriented Langauges like Java or Ruby. ES6 however did, introduce a syntax for object creation that uses class keyword. It is basically a new syntax that does the exact same thing as the object constructors and protoypes.
+JavaScript does not have classes in the same sense as other Object Oriented Langauges like Java or Ruby. ES6 however did, introduce a syntax for object creation that uses the class keyword. It is basically a new syntax that does the exact same thing as the object constructors and protoypes.
 
-There is a bit of controversy about the using the class syntax. Opponents argue that class is basically syntactic sugar over the existing prototype-based constructors and that it's dangerous and/or misleading to obscure whats really going on with these objects. Despite the controversy, classes are beginning to crop up in real code bases that you are almost certainly going to encounter such as frameworks like react.  
+There is a bit of controversy about the using the class syntax. Opponents argue that class is basically syntactic sugar over the existing prototype-based constructors and that it's dangerous and/or misleading to obscure whats really going on with these objects. Despite the controversy, classes are beginning to crop up in real code bases that you are almost certainly going to encounter such as frameworks like react.
+
+In Object Oriented programming a class is a template for creating objects, providing initial values for variables and implementations of methods or functions.
+
+JavaScript is not a class based object-oriented language like Java, it is a prototype based object-oriented langauge. In Java classes are blueprints in which you create objects through inheritance. In JS classes are constructor functions with less lines of code.
+
+
+
+
+
+
+
+
+
+
 
 */
 
