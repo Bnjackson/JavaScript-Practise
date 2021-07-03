@@ -892,17 +892,64 @@ In Object Oriented programming a class is a template for creating objects, provi
 
 JavaScript is not a class based object-oriented language like Java, it is a prototype based object-oriented langauge. In Java classes are blueprints in which you create objects through inheritance. In JS classes are constructor functions with less lines of code.
 
-
-
-
-
-
-
-
-
-
-
+The CLASS syntax is
 */
+
+class User {
+  constructor(name) { //The constructor method is automatically called by new so we can intialize the object there.
+    this.name = name;
+  }
+  sayHi() { //method added to new object
+    console.log(this.name);
+  }
+}
+
+let user = new User("Ben"); //We create new objects using new className()
+user.sayHi() //Prints Ben
+
+/*
+When new User("ben") is called - a new object is created and the constructor runs with the given argument and
+assigns it to this.name. Then we can call object methods such as user.sayHi()
+
+What is a class?
+
+What a class user {....} construct really does is:
+1. Creates a function named User, that becomes the result of the class declaration. The function code is taken from the constructor method(assumed empty if we dont write such methods).
+2. Store class methods, such as sayHi in User.prototype.
+
+After new User is created when we call its method its taken from the prototype. So the object has access to class methods.
+
+Just like object literals, classes may include getters/setters, computed properties etc.
+
+Class fields
+Previously, our class only had methods.
+"Class Fields" is a syntax that allows to add any properties.
+For example if we wanted to add a name property to class User
+*/
+
+class User {
+  name = "Ben";
+  sayHi() {
+    console.log(`Hello, ${this.name}!`); // Prints Hello, Ben!
+  }
+}
+
+/*
+Class Expression
+
+Just like functions, classes can be defined inside another expression, passed around, returned, assigned etc.
+Heres an example of a class expression
+*/
+let User = class{
+
+}
+
+// Like functions we can also have named class expressions, if a class expression has a name it's visible inside the class only.
+let User = class MyClass{
+  sayHi() {
+    alert(MyClass) // MyClass name is visible only inside the class.
+  }
+}
 
 /*
 BUILT IN OBJECT METHODS
